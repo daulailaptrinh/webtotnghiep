@@ -8,13 +8,13 @@ initializeApp({
 
 const db = getFirestore();
 
-const docRef = db.collection('users').doc('alovelace');
+const docRef = db.collection('users').doc('Trung');
 
 //Add data
 docRef.set({
-  first: 'Ada',
-  last: 'Lovelace',
-  born: 1815
+  first: 'Dang',
+  last: 'Trung',
+  born: 2001
 });
 
 //Read data
