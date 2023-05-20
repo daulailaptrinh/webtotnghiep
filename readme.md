@@ -1,3 +1,0 @@
-- Chạy lệnh "npm install" để cài đặt gói cần thiết
-- Trang index.js thực hiện kết nối và add data mới
-- Node.js version v18.16.0
