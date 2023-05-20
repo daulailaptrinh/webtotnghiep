@@ -1,5 +1,13 @@
 {
   "dependencies": {
-    "firebase-admin": "^11.8.0"
+    "firebase": "^9.22.0",
+    "firebase-admin": "^11.8.0",
+    "vue": "^3.3.4",
+    "vue-axios": "^3.5.2",
+    "vue-loader": "^17.1.1",
+    "vue-router": "^4.2.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
   }
 }

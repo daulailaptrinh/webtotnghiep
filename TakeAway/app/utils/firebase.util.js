@@ -5,15 +5,3 @@ const serviceAccount = require('./takeaway-3fa55-firebase-adminsdk-i89nk-8bb632d
 initializeApp({
   credential: cert(serviceAccount)
 });
-const db = getFirestore();
-
-const docRef = db.collection('users').doc('Trung2');
-
-//Add data
-docRef.set({
-  first: 'Dang',
-  last: 'Trung2',
-  born: 2001
-});
-
-//Read data
