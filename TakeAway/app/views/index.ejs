@@ -1,0 +1,13 @@
+<h1>Giao diện trang chủ</h1>
+<div>
+    <% if(session.user_id) { %>
+
+        <h1>Hi User, Welcome</h1>
+
+        <a href="/logout" class="btn btn-primary">Logout</a>
+
+        <% } else { %>
+            <a href="/login">Đăng nhập</a>
+            <% } %>
+
+</div>

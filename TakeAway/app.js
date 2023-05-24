@@ -1,45 +1,49 @@
-const express = require("express");
-const cors = require("cors");
-const usersRouter = require("./app/routes/user.route");
-const { initializeApp, applicationDefault, cert } = require('firebase-admin/app');
-const { getFirestore, Timestamp, FieldValue } = require('firebase-admin/firestore');
-const serviceAccount = require('./app/utils/takeaway-3fa55-firebase-adminsdk-i89nk-8bb632da37.json');
+var createError = require('http-errors');
+var express = require('express');
+var path = require('path');
+var cookieParser = require('cookie-parser');
+var logger = require('morgan');
 
-initializeApp({
-    credential: cert(serviceAccount)
-});
+var session = require('express-session');
 
-const db = getFirestore();
+var indexRouter = require('./app/routes/index');
+var usersRouter = require('./app/routes/user.route');
 
-const app = express();
+var app = express();
 
-app.use(cors());
+app.use(session({
+  secret : 'webslesson',
+  resave : true,
+  saveUninitialized : true
+}));
+
+// view engine setup
+app.set('views', path.join(__dirname, './app/views'));
+app.set('view engine', 'ejs');
+
+app.use(logger('dev'));
 app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(express.static(path.join(__dirname, 'public')));
 
-app.get("/", async (req, res) => {
-    // res.json({message: "Hello World!"});
-    const userRef = db.collection('users').doc('Trung');
-    const doc = await userRef.get();
-    if (!doc.exists) {
-        console.log('No such document!');
-    } else {
-        console.log('Document data:', doc.data());
-        res.json(doc.data());
-    }
+app.use('/', indexRouter);
+app.use('/users', usersRouter);
+
+// catch 404 and forward to error handler
+app.use(function(req, res, next) {
+  next(createError(404));
 });
 
-app.get("/add", async (req, res) => {
-    const docRef = db.collection('users').doc('Trung3');
-    docRef.set({
-        first: 'Dang',
-        last: 'Trung3',
-        born: 2001
-    });
+// error handler
+app.use(function(err, req, res, next) {
+  // set locals, only providing error in development
+  res.locals.message = err.message;
+  res.locals.error = req.app.get('env') === 'development' ? err : {};
+
+  // render the error page
+  res.status(err.status || 500);
+  res.render('error');
 });
 
-// app.use("/api/users", usersRouter);
-
-// app.get("/", (req, res) => {
-//     res.json({message: "Welcome to contact book application!"});
-// });
 module.exports = app;
