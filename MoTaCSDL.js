@@ -1,4 +1,5 @@
 /*
+Link đến ER-Diagram: https://drive.google.com/file/d/1qnGdXrLPVKiqQEdr6qg_hgScR8De4MNj/view?usp=sharing
 <!-------------------->
 Collection DiemBan:
 DB001
