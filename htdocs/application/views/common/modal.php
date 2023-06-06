@@ -77,7 +77,7 @@
                     </div>
                     <div class="form-group">
                         <div class="col-sm-3">
-                            <label for="stock">Kho làm việc</label>
+                            <label for="manv">Cửa hàng làm việc</label>
                         </div>
                         <div class="col-sm-9">
                             <div class="stock-selbox"></div>
