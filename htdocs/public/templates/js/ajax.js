@@ -354,7 +354,7 @@ function cms_cruser() {
     var $mail = $.trim($('#frm-cruser #mail').val());
     var $password = $.trim($('#frm-cruser #password').val());
     var $group = $('#frm-cruser .group-user .group-selbox #sel-group').val();
-    var $stock = $('#frm-cruser .stock-selbox #sel-stock').val();
+    var $stock = $('#frm-cruser .stock-selbox #store-id').val();
     $('#frm-cruser .group-user .group-selbox #sel-group').on('change', function () {
         $group = $(this).val();
     });
@@ -386,7 +386,7 @@ function cms_cruser() {
             'mail': $mail,
             'group': $group,
             'password': $password,
-            'store_id': $stock
+            'stock': $stock
         };
         var $param = {
             'type': 'POST',
@@ -667,7 +667,7 @@ function cms_crstore() {
     } else {
         $('.error-store_name').text('');
     }
-
+    
     if ($store_name) {
         var $param = {
             'type': 'POST',
@@ -2493,7 +2493,6 @@ function cms_save_import(type) {
 
 function cms_selboxstock() {
     "use strict";
-
     var $param = {
         'type': 'POST',
         'url': 'ajax/cms_selboxstock',
@@ -2501,6 +2500,7 @@ function cms_selboxstock() {
         'callback': function (data) {
             if (data != '0') {
                 $('.stock-selbox').html(data);
+                cms_upstore();
             } else {
                 $('.stock-selbox').html($html);
             }

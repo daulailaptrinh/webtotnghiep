@@ -205,7 +205,7 @@ class Ajax extends CI_Controller
     }
 
     /*
-     * Load dánh sách nhóm người dùng
+     * Load danh sách nhóm người dùng
      /****************************************/
     public function cms_upgroup()
     {
@@ -285,7 +285,7 @@ class Ajax extends CI_Controller
         $groups = $this->db->select('id, group_name')->from('users_group')->get()->result_array();
         if (isset($groups) && count($groups)) {
             $html = '';
-            $html .= '<select name="group" id="sel-group" class="form-control">';;
+            $html .= '<select name="group" id="sel-group" class="form-control">';
             foreach ($groups as $group) {
                 $html .= '<option value="' . $group['id'] . '">' . $group['group_name'] . '</option>';
             }
@@ -298,18 +298,30 @@ class Ajax extends CI_Controller
 
     public function cms_selboxstock()
     {
-        $groups = $this->db->select('ID, stock_name')->from('stores')->get()->result_array();
+        // $groups = $this->db->from('stores')->get()->result_array();
+        // if (!empty($groups) && count($groups)!=0) {
+        //     $html = '';
+        //     $html .= '<select name="stock" id="sel-stock" class="form-control">';
+        //     foreach ($groups as $group) {
+        //         $html .= '<option value="' . $group['id'] . '">' . $group['stock_name'] . '</option>';
+        //     }
+        //     $html .= '</select>';
+        //     echo $this->messages = $html;
+        // } else {
+        //     echo $this->messages;
+        // }
+        $groups = $this->db->select('id, group_name')->from('users_group')->get()->result_array();
         if (isset($groups) && count($groups)) {
             $html = '';
-            $html .= '<select name="stock" id="sel-stock" class="form-control">';;
+            $html .= '<select name="group" id="sel-group" class="form-control">';
             foreach ($groups as $group) {
-                $html .= '<option value="' . $group['ID'] . '">' . $group['stock_name'] . '</option>';
+                $html .= '<option value="' . $group['id'] . '">' . $group['group_name'] . '</option>';
             }
             $html .= '</select>';
             echo $this->messages = $html;
         } else {
             echo $this->messages;
-        }
+        } 
     }
 
     /*

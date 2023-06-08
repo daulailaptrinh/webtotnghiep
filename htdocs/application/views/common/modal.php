@@ -77,11 +77,19 @@
                     </div>
                     <div class="form-group">
                         <div class="col-sm-3">
-                            <label for="manv">Cửa hàng làm việc</label>
+                            <label for="stock">Cửa hàng</label>
                         </div>
+                        <!--Thêm mới để thêm cửa hàng: có sửa đổi trong file ajax.js để thêm dữ liệu POST-->
                         <div class="col-sm-9">
-                            <div class="stock-selbox"></div>
+                            <div class="stock-selbox">
+                                <select id="store-id" class="form-control" style="margin: 8px auto">
+                                <?php foreach ($data['store'] as $key => $item) :?>
+                                    <option <?php if($item['ID']==$data['store_id']) echo 'selected '; ?> value="<?php echo $item['ID']; ?>"><?php echo $item['stock_name']; ?></option>
+                                <?php endforeach;?>
+                                </select>
+                            </div>
                         </div>
+                        <!--Thêm mới để thêm cửa hàng-->
                     </div>
                 </form>
             </div>
@@ -196,6 +204,7 @@
                             <label for="group-name">Tên cửa hàng</label>
                         </div>
                         <div class="col-sm-9">
+
                             <input type="text" id="store-name" name="store_name" class="form-control" value=""
                                    placeholder="Nhập cửa hàng">
                             <span style="color: red; font-style: italic;" class="error error-store_name"></span>
