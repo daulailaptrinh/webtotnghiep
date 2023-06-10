@@ -204,7 +204,6 @@
                             <label for="group-name">Tên cửa hàng</label>
                         </div>
                         <div class="col-sm-9">
-
                             <input type="text" id="store-name" name="store_name" class="form-control" value=""
                                    placeholder="Nhập cửa hàng">
                             <span style="color: red; font-style: italic;" class="error error-store_name"></span>

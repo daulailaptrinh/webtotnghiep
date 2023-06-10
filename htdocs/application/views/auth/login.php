@@ -19,7 +19,7 @@
                            value="<?php echo cms_common_input(isset($_post) ? $_post : [], 'password'); ?>"
                            class="form-control" id="inputPassword3" placeholder="Mật khẩu">
                     <i class="fa fa-lock icon-right"></i>
-                    <span>user: admin - pass: 12345678</span>
+                    
                 </div>
 
                 <div class="form-group">
@@ -27,13 +27,11 @@
                     <input type="submit" name="login" value="Đăng nhập" class="btn btn-primary btn-sm"/>
                 </div>
             </form>
+            <div class="link-action text-center">
+        <div>
+            <a href="authentication/fg_password" style="color: black;">Quên mật khẩu</a>
         </div>
     </div>
-
-    <div class="link-action text-center">
-        <div class="col-sm-6 col-xs-12">
-            <a href="authentication/fg_password" style="display:inline-block; margin-top: 5px;" class="fg-passw">Quên
-                mật khẩu</a>
         </div>
     </div>
 </div>

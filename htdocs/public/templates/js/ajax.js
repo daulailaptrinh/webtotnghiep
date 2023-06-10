@@ -386,8 +386,9 @@ function cms_cruser() {
             'mail': $mail,
             'group': $group,
             'password': $password,
-            'stock': $stock
+            'stock': $stock,
         };
+        alert($stock);
         var $param = {
             'type': 'POST',
             'url': 'ajax/cms_cruser',
@@ -667,7 +668,7 @@ function cms_crstore() {
     } else {
         $('.error-store_name').text('');
     }
-    
+    alert($store_name);
     if ($store_name) {
         var $param = {
             'type': 'POST',

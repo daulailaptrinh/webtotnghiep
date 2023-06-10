@@ -62,6 +62,7 @@ class Config extends CI_Controller
 
     public function cms_crstore($store_name)
     {
+        $store_name = urldecode($store_name);
         $count = $this->db->where('stock_name', $store_name)->from('stores')->count_all_results();
         if ($count == 0) {
             $data = ['stock_name' => $store_name, 'user_init'=>$this->auth['id']];

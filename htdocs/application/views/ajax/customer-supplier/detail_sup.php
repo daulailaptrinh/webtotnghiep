@@ -10,7 +10,7 @@
                 <div class="right-action text-right">
                     <div class="btn-groups">
                         <button type="button" class="btn btn-primary btn-hide-edit" onclick="cms_edit_cusitem( 'sup')">
-                            <i class="fa fa-pencil-square-o"></i> sửa
+                            <i class="fa fa-pencil-square-o"></i> Sửa
                         </button>
                         <button type="button" class="btn btn-default btn-hide-edit"
                                 onclick="cms_javascript_redirect( cms_javascrip_fullURL() )"><i

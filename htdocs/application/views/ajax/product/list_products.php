@@ -44,6 +44,8 @@
 <!--                <td class="text-center"-->
 <!--                    style="width: 35px;">--><?php //echo (!empty($item['prd_image_url'])) ? "<img src='{$item['prd_image_url']}' alt='{$item['prd_name']}' width='22' height='22' style='border-radius: 15px; padding: 3px; border: 1px solid #ccc;'/>" : '<i class="fa fa-cloud-upload" style="font-size: 18px; color: #337ab7; cursor: pointer; "></i>' ?><!--</td>-->
                 <td class="text-center">
+                    <i title="Edit" onclick="cms_edit_product(<?php echo $item['ID'].','; ?>);" class="fa fa-edit yellow"
+                       style="margin-right: 5px;"></i>
                     <i title="Copy" onclick="cms_clone_product(<?php echo $item['ID']; ?>);" class="fa fa-files-o blue"
                        style="margin-right: 5px;"></i>
                     <?php

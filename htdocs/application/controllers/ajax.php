@@ -14,7 +14,7 @@ class Ajax extends CI_Controller
 
     public function cms_cruser()
     {
-        $_post = ['display', 'mail', 'password', 'group', 'username', 'store_id'];
+        $_post = ['display', 'mail', 'password', 'group', 'username', 'stock'];
 
         foreach ($_post as $item) {
             $data[] = $this->input->post($item);
@@ -124,12 +124,13 @@ class Ajax extends CI_Controller
     {
         $id = (int)$this->input->post('id');
         $user = $this->db->where('id', $id)->from('users')->get()->row_array();
+
         if (!isset($user) || count($user) == 0) {
-            echo $this->messages;
-        } else {
-            //$this->db->where(['id' => $id])->delete('users');
-            echo $this->messages = '1';
-        }
+    echo $this->messages;
+    } else {
+    $this->db->where('id', $id)->delete('users');
+    echo $this->messages = '1';
+    }
     }
 
     /*
@@ -285,7 +286,7 @@ class Ajax extends CI_Controller
         $groups = $this->db->select('id, group_name')->from('users_group')->get()->result_array();
         if (isset($groups) && count($groups)) {
             $html = '';
-            $html .= '<select name="group" id="sel-group" class="form-control">';
+            $html .= '<select name="group" id="sel-group" class="form-control">';;
             foreach ($groups as $group) {
                 $html .= '<option value="' . $group['id'] . '">' . $group['group_name'] . '</option>';
             }
@@ -298,30 +299,18 @@ class Ajax extends CI_Controller
 
     public function cms_selboxstock()
     {
-        // $groups = $this->db->from('stores')->get()->result_array();
-        // if (!empty($groups) && count($groups)!=0) {
-        //     $html = '';
-        //     $html .= '<select name="stock" id="sel-stock" class="form-control">';
-        //     foreach ($groups as $group) {
-        //         $html .= '<option value="' . $group['id'] . '">' . $group['stock_name'] . '</option>';
-        //     }
-        //     $html .= '</select>';
-        //     echo $this->messages = $html;
-        // } else {
-        //     echo $this->messages;
-        // }
-        $groups = $this->db->select('id, group_name')->from('users_group')->get()->result_array();
+        $groups = $this->db->select('ID, stock_name')->from('stores')->get()->result_array();
         if (isset($groups) && count($groups)) {
             $html = '';
-            $html .= '<select name="group" id="sel-group" class="form-control">';
+            $html .= '<select name="stock" id="sel-stock" class="form-control">';;
             foreach ($groups as $group) {
-                $html .= '<option value="' . $group['id'] . '">' . $group['group_name'] . '</option>';
+                $html .= '<option value="' . $group['ID'] . '">' . $group['stock_name'] . '</option>';
             }
             $html .= '</select>';
             echo $this->messages = $html;
         } else {
             echo $this->messages;
-        } 
+        }
     }
 
     /*
