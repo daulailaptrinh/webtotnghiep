@@ -140,8 +140,10 @@
                                     </thead>
                                     <tbody>
                                     <?php
+                                    
                                     $queue= 1;
                                     foreach ($list_products as $product) {
+                                        $discount = $this->db->from('discount')->where('product', $product['id'])->get()->row_array();
                                         $_product = cms_finding_productbyID($product['id']);
                                         $_product['quantity'] = $product['quantity'];
                                         $_product['price'] = $product['price'];
@@ -160,10 +162,38 @@
                                                 <?php echo $_product['quantity']; ?>
                                             </td>
                                             <td class="text-center">
-                                                <?php echo cms_encode_currency_format($_product['price']); ?>
+                                                <?php
+                                                if ($discount != NULL)
+                                                {
+                                                    echo "<p style='text-decoration: line-through; display: inline;'>";
+                                                    echo cms_encode_currency_format($_product['price']); 
+                                                    echo "</p>";
+                    
+                                                    echo "<p style='display: inline;'>  -".number_format($discount['percent'])."%</p>";
+                    
+                                                    echo "<p>";
+                                                    echo number_format((100-$discount['percent'])/100.0 * $_product['price']);
+                                                    echo "</p>";
+                                                }
+                                                else
+                                                {
+                                                    echo cms_encode_currency_format($_product['price']); 
+                                                }
+                                                ?>
                                             </td>
                                             <td class="text-center">
-                                                <?php echo cms_encode_currency_format($_product['price']*$_product['quantity']); ?>
+                                                <?php 
+                                                if ($discount != NULL)
+                                                {
+                                                    echo "<p>";
+                                                    echo number_format((100-$discount['percent'])/100.0 * $_product['price']*$_product['quantity']);
+                                                    echo "</p>";
+                                                }
+                                                else
+                                                {
+                                                    echo cms_encode_currency_format($_product['price']*$_product['quantity']); 
+                                                }
+                                                ?>
                                             </td>
                                         </tr>
                                     <?php

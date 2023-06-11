@@ -1,10 +1,10 @@
-<div class="alert alert-dange ajax-error" role="alert"><span
-        style="font-weight: bold; font-size: 18px;">Thông báo!</span><br>
+<div class="alert alert-dange ajax-error" role="alert"><span style="font-weight: bold; font-size: 18px;">Thông
+        báo!</span><br>
 
     <div class="ajax-error-ct"></div>
 </div>
 <div class="alert ajax-success" role="alert"
-     style="width: 350px;background: rgba(92,130,79,0.9); display:none; color: #fff;"><span
+    style="width: 350px;background: rgba(92,130,79,0.9); display:none; color: #fff;"><span
         style="font-weight: bold; font-size: 18px;">Thông báo!</span>
     <br>
 
@@ -28,7 +28,7 @@
                         </div>
                         <div class="col-sm-9">
                             <input type="text" id="display_name" name="display_name" class="form-control" value=""
-                                   placeholder="Nhập tên nhân viên">
+                                placeholder="Nhập tên nhân viên">
                             <span style="color: red; font-style: italic;" class="error error-display_name"></span>
                         </div>
                     </div>
@@ -38,7 +38,7 @@
                         </div>
                         <div class="col-sm-9">
                             <input type="text" id="manv" name="manv" class="form-control" value=""
-                                   placeholder="Nhập mã nhân viên">
+                                placeholder="Nhập mã nhân viên">
                             <span style="color: red; font-style: italic;" class="error error-manv"></span>
                         </div>
                     </div>
@@ -48,7 +48,7 @@
                         </div>
                         <div class="col-sm-9">
                             <input type="text" id="mail" name="email" class="form-control" value=""
-                                   placeholder="Nhập email của bạn">
+                                placeholder="Nhập email của bạn">
                             <span style="color: red; font-style: italic;" class="error error-mail"></span>
                         </div>
                     </div>
@@ -58,7 +58,7 @@
                         </div>
                         <div class="col-sm-9">
                             <input type="password" id="password" name="password" class="form-control" value=""
-                                   placeholder="Nhập Mật khẩu">
+                                placeholder="Nhập Mật khẩu">
                             <span style="color: red; font-style: italic;" class="error error-password"></span>
                         </div>
                     </div>
@@ -69,7 +69,11 @@
                         <div class="col-sm-9">
                             <div class="group-user">
                                 <div class="group-selbox">
-
+                                    <select name="group" id="sel-group" class="form-control">
+                                        <option value="1">Nhân Viên</option>
+                                        <option value="2">Admin</option>
+                                        <option value="3">Quản Lý</option>
+                                    </select>
                                 </div>
                                 <span style="color: red; font-style: italic;" class="error error-group"></span>
                             </div>
@@ -83,9 +87,10 @@
                         <div class="col-sm-9">
                             <div class="stock-selbox">
                                 <select id="store-id" class="form-control" style="margin: 8px auto">
-                                <?php foreach ($data['store'] as $key => $item) :?>
-                                    <option <?php if($item['ID']==$data['store_id']) echo 'selected '; ?> value="<?php echo $item['ID']; ?>"><?php echo $item['stock_name']; ?></option>
-                                <?php endforeach;?>
+                                    <?php foreach ($data['store'] as $key => $item) :?>
+                                    <option <?php if($item['ID']==$data['store_id']) echo 'selected '; ?>
+                                        value="<?php echo $item['ID']; ?>"><?php echo $item['stock_name']; ?></option>
+                                    <?php endforeach;?>
                                 </select>
                             </div>
                         </div>
@@ -124,7 +129,7 @@
                         </div>
                         <div class="col-sm-9">
                             <input type="text" id="permisstion_url" name="permisstion_url" class="form-control" value=""
-                                   placeholder="Nhập url cho phép của chức năng">
+                                placeholder="Nhập url cho phép của chức năng">
                             <span style="color: red; font-style: italic;" class="error error-permisstion_url"></span>
                         </div>
                     </div>
@@ -134,7 +139,7 @@
                         </div>
                         <div class="col-sm-9">
                             <input type="text" id="permisstion_name" name="permisstion_name" class="form-control"
-                                   value="" placeholder="Nhập tên chức năng">
+                                value="" placeholder="Nhập tên chức năng">
                             <span style="color: red; font-style: italic;" class="error error-permisstion_name"></span>
                         </div>
                     </div>
@@ -169,8 +174,8 @@
                         </div>
                         <div class="col-sm-9">
                             <input type="text" id="group-name" name="group_name" class="form-control" value=""
-                                   placeholder="Nhập tên nhóm người dùng">
-                            <span style="color: red; font-style: italic;" class="error error-group_name"></span>
+                                placeholder="Nhập tên nhóm người dùng">
+                            <span style=" color: red; font-style: italic;" class="error error-group_name"></span>
                         </div>
                     </div>
                 </form>
@@ -205,14 +210,15 @@
                         </div>
                         <div class="col-sm-9">
                             <input type="text" id="store-name" name="store_name" class="form-control" value=""
-                                   placeholder="Nhập cửa hàng">
+                                placeholder="Nhập cửa hàng">
                             <span style="color: red; font-style: italic;" class="error error-store_name"></span>
                         </div>
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary btn-sm" onclick="cms_crstore();" ><i class="fa fa-check"></i> Lưu
+                <button type="button" class="btn btn-primary btn-sm" onclick="cms_crstore();"><i
+                        class="fa fa-check"></i> Lưu
                 </button>
                 <button type="button" class="btn btn-default btn-sm btn-close" data-dismiss="modal"><i
                         class="fa fa-undo"></i> Bỏ qua
@@ -241,7 +247,7 @@
                         </div>
                         <div class="col-sm-9">
                             <input type="text" id="customer_code" name="customer_code" class="form-control" value=""
-                                   placeholder="Mã khách hàng(tự sinh nếu bỏ trống)">
+                                placeholder="Mã khách hàng(tự sinh nếu bỏ trống)">
                             <span style="color: red; font-style: italic;" class="error error-customer_code"></span>
                         </div>
                     </div>
@@ -251,7 +257,7 @@
                         </div>
                         <div class="col-sm-9">
                             <input type="text" id="customer_name" name="customer_name" class="form-control" value=""
-                                   placeholder="Nhập tên khách hàng( bắc buộc )">
+                                placeholder="Nhập tên khách hàng( bắc buộc )">
                             <span style="color: red; font-style: italic;" class="error error-customer_name"></span>
                         </div>
                     </div>
@@ -260,8 +266,8 @@
                             <label for="customer_phone">Số điện thoại</label>
                         </div>
                         <div class="col-sm-9">
-                            <input type="text" id="customer_phone" name="customer_phone"
-                                   class="form-control" value="" placeholder="">
+                            <input type="text" id="customer_phone" name="customer_phone" class="form-control" value=""
+                                placeholder="">
                             <span style="color: red; font-style: italic;" class="error error-customer_phone"></span>
                         </div>
                     </div>
@@ -271,7 +277,7 @@
                         </div>
                         <div class="col-sm-9">
                             <input type="text" id="customer_email" name="customer_email" class="form-control" value=""
-                                   placeholder="Nhập email khách hàng ( ví dụ: kh10@gmail.com )">
+                                placeholder="Nhập email khách hàng ( ví dụ: kh10@gmail.com )">
                             <span style="color: red; font-style: italic;" class="error error-customer_email"></span>
                         </div>
                     </div>
@@ -280,8 +286,8 @@
                             <label for="customer_addr">Địa chỉ</label>
                         </div>
                         <div class="col-sm-9">
-                            <input type="text" id="customer_addr" name="customer_addr" class="form-control"
-                                   value="" placeholder="">
+                            <input type="text" id="customer_addr" name="customer_addr" class="form-control" value=""
+                                placeholder="">
                             <span style="color: red; font-style: italic;" class="error error-customer_addr"></span>
                         </div>
                     </div>
@@ -291,7 +297,7 @@
                         </div>
                         <div class="col-sm-9">
                             <input type="text" id="customer_notes" name="customer_notes" class="form-control" value=""
-                                   placeholder="">
+                                placeholder="">
                             <span style="color: red; font-style: italic;" class="error error-customer_notes"></span>
                         </div>
                     </div>
@@ -301,7 +307,7 @@
                         </div>
                         <div class="col-sm-9">
                             <input type="text" id="customer_birthday" name="customer_birthday"
-                                   class="form-control txttimes" value="" placeholder="yyyy-mm-dd">
+                                class="form-control txttimes" value="" placeholder="yyyy-mm-dd">
                             <span style="color: red;" class="error error-customer_birthday"></span>
                         </div>
                     </div>
@@ -349,7 +355,7 @@
                         </div>
                         <div class="col-sm-9">
                             <input type="text" id="supplier_code" name="supplier_code" class="form-control" value=""
-                                   placeholder="Mã nhà cung cấp (Tự sinh nếu bỏ trống)">
+                                placeholder="Mã nhà cung cấp (Tự sinh nếu bỏ trống)">
                             <span style="color: red; font-style: italic;" class="error error-supplier_code"></span>
                         </div>
                     </div>
@@ -359,7 +365,7 @@
                         </div>
                         <div class="col-sm-9">
                             <input type="text" id="supplier_name" name="supplier_name" class="form-control" value=""
-                                   placeholder="Nhập tên nhà cung cấp (bắc buộc)">
+                                placeholder="Nhập tên nhà cung cấp (bắc buộc)">
                             <span style="color: red; font-style: italic;" class="error error-supplier_name"></span>
                         </div>
                     </div>
@@ -368,8 +374,8 @@
                             <label for="supplier_phone">Số điện thoại</label>
                         </div>
                         <div class="col-sm-9">
-                            <input type="text" id="supplier_phone" name="supplier_phone" class="form-control"
-                                   value="" placeholder="Số điện thoại">
+                            <input type="text" id="supplier_phone" name="supplier_phone" class="form-control" value=""
+                                placeholder="Số điện thoại">
                             <span style="color: red; font-style: italic;" class="error error-supplier_phone"></span>
                         </div>
                     </div>
@@ -379,7 +385,7 @@
                         </div>
                         <div class="col-sm-9">
                             <input type="text" id="supplier_email" name="supplier_email" class="form-control" value=""
-                                   placeholder="Nhập email nhà cung cấp ( ví dụ: kh10@gmail.com )">
+                                placeholder="Nhập email nhà cung cấp ( ví dụ: kh10@gmail.com )">
                             <span style="color: red; font-style: italic;" class="error error-supplier_email"></span>
                         </div>
                     </div>
@@ -388,26 +394,28 @@
                             <label for="supplier_addr">Địa chỉ</label>
                         </div>
                         <div class="col-sm-9">
-                            <input type="text" id="supplier_addr" name="supplier_addr" class="form-control"
-                                   value="" placeholder="">
+                            <input type="text" id="supplier_addr" name="supplier_addr" class="form-control" value=""
+                                placeholder="">
                             <span style="color: red; font-style: italic;" class="error error-supplier_addr"></span>
                         </div>
                     </div>
-                                        <div class="form-group">
-                                            <div class="col-sm-3">
-                                                <label for="tax_code">Mã số thuế</label>
-                                            </div>
-                                            <div class="col-sm-9">
-                                                <input type="text" id="tax_code" name="tax_code" class="form-control" value="" placeholder="">
-                                                <span style="color: red; font-style: italic;" class="error error-tax_code"></span>
-                                            </div>
-                                        </div>
+                    <div class="form-group">
+                        <div class="col-sm-3">
+                            <label for="tax_code">Mã số thuế</label>
+                        </div>
+                        <div class="col-sm-9">
+                            <input type="text" id="tax_code" name="tax_code" class="form-control" value=""
+                                placeholder="">
+                            <span style="color: red; font-style: italic;" class="error error-tax_code"></span>
+                        </div>
+                    </div>
                     <div class="form-group">
                         <div class="col-sm-3">
                             <label for="supplier_notes">Ghi chú</label>
                         </div>
                         <div class="col-sm-9">
-                            <input type="text" id="supplier_notes" name="notes" class="form-control" value="" placeholder="">
+                            <input type="text" id="supplier_notes" name="notes" class="form-control" value=""
+                                placeholder="">
                             <span style="color: red; font-style: italic;" class="error error-supplier_notes"></span>
                         </div>
                     </div>
@@ -445,7 +453,7 @@
                                 href="#list-manufacture" aria-controls="list-manufacture" role="tab"
                                 data-toggle="tab"><i class="fa fa-list"></i> Danh sách Nhà sản xuất</a></li>
                         <li role="presentation"><a href="#create-manufacture" aria-controls="create-manufacture"
-                                                   role="tab" data-toggle="tab"><i class="fa fa-plus"></i> Tạo mới chủng
+                                role="tab" data-toggle="tab"><i class="fa fa-plus"></i> Tạo mới chủng
                                 loại</a></li>
                     </ul>
 
@@ -464,15 +472,16 @@
                                     <div class="form-group">
                                         <div class="col-md-7 padd-right-0">
                                             <input type="text" style="border-radius: 0 !important;" class="form-control"
-                                                   id="prd_manuf_name" value="" placeholder="Nhập tên Nhà sản xuất">
+                                                id="prd_manuf_name" value="" placeholder="Nhập tên Nhà sản xuất">
                                         </div>
                                         <div class="input-groups-btn col-md-5 padd-0">
                                             <button type="button" class="btn btn-primary"
-                                                    style="border-radius: 0 3px 3px 0;"
-                                                    onclick="cms_create_manufacture(1);"><i class="fa fa-check"></i> Lưu
+                                                style="border-radius: 0 3px 3px 0;"
+                                                onclick="cms_create_manufacture(1);"><i class="fa fa-check"></i> Lưu
                                             </button>
-                                            <button type="button" class="btn btn-primary " onclick="cms_create_manufacture(0);"><i
-                                                    class="fa fa-floppy-o"></i> Lưu và tiếp tục
+                                            <button type="button" class="btn btn-primary "
+                                                onclick="cms_create_manufacture(0);"><i class="fa fa-floppy-o"></i> Lưu
+                                                và tiếp tục
                                             </button>
                                         </div>
                                     </div>
@@ -505,12 +514,10 @@
                     <ul class="nav nav-tabs tab-setting" role="tablist"
                         style="background-color: #EFF3F8; padding: 5px 0 0 15px;">
                         <li role="presentation" class="active" style="margin-right: 3px;"><a href="#list-groups"
-                                                                                             aria-controls="list-group"
-                                                                                             role="tab"
-                                                                                             data-toggle="tab"><i
-                                    class="fa fa-list"></i> Danh sách danh mục</a></li>
+                                aria-controls="list-group" role="tab" data-toggle="tab"><i class="fa fa-list"></i> Danh
+                                sách danh mục</a></li>
                         <li role="presentation"><a href="#create-groups" aria-controls="create-group" role="tab"
-                                                   data-toggle="tab"><i class="fa fa-plus"></i> Tạo mới danh mục</a>
+                                data-toggle="tab"><i class="fa fa-plus"></i> Tạo mới danh mục</a>
                         </li>
                     </ul>
 
@@ -518,7 +525,7 @@
                     <div class="tab-content" style="padding:10px; border: 1px solid #ddd; border-top: none;">
                         <div role="tabpanel" class="tab-pane active" id="list-groups">
                             <div class="prd_group-body">
-                                <div class="text-center"><img src="public/templates/images/balls.gif"/></div>
+                                <div class="text-center"><img src="public/templates/images/balls.gif" /></div>
                             </div>
                         </div>
 
@@ -532,7 +539,7 @@
                                         </div>
                                         <div class="col-md-8">
                                             <input type="text" id="prd_group_name" class="form-control"
-                                                   placeholder="Nhập tên danh mục.">
+                                                placeholder="Nhập tên danh mục.">
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -548,11 +555,11 @@
                                     <div class="form-group">
                                         <div class="col-md-8 col-md-offset-4">
                                             <button type="button" class="btn btn-primary"
-                                                    style="border-radius: 0 3px 3px 0;" onclick="cms_create_group(1);"><i
+                                                style="border-radius: 0 3px 3px 0;" onclick="cms_create_group(1);"><i
                                                     class="fa fa-check"></i> Lưu
                                             </button>
                                             <button type="button" class="btn btn-primary "
-                                                    onclick="cms_create_group(0);"><i class="fa fa-floppy-o"></i> Lưu
+                                                onclick="cms_create_group(0);"><i class="fa fa-floppy-o"></i> Lưu
                                                 và tiếp tục
                                             </button>
                                         </div>

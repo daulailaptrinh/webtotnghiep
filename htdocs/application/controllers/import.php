@@ -156,17 +156,25 @@ class Import extends CI_Controller
         $id = $this->input->post('id');
         $seq = $this->input->post('seq');
         $product = $this->db->from('products')->where('ID', $id)->get()->row_array();
+        $discount = $this->db->from('discount')->where('ID', $id)->get()->row_array();
         if (isset($product) && count($product) != 0) {
             ob_start(); ?>
             <tr data-id="<?php echo $product['ID']; ?>">
                 <td class="text-center seq"><?php echo $seq; ?></td>
                 <td><?php echo $product['prd_code']; ?></td>
                 <td><?php echo $product['prd_name']; ?></td>
-                <td class="text-center" style="max-width: 30px;"><input style="max-height: 22px;" type="text"
-                                                                        class="txtNumber form-control quantity_product_import text-center"
-                                                                        value="1"></td>
-                <td class="text-center" style="max-width: 120px;"><input  style="max-height: 22px;" type="text"
-                                                                         class="txtMoney form-control text-center price-order" value="<?php echo number_format($product['prd_origin_price']); ?>"></td>
+                <td class="text-center" style="max-width: 30px;">
+                <!--Số lượng sản phẩm lựa chọn-->
+                <input style="max-height: 22px;" type="text"
+                       class="txtNumber form-control quantity_product_import text-center"
+                       value="1">
+                </td>
+                <!--Giá sản phẩm-->
+                <td class="text-center" style="max-width: 120px;">
+                <input  style="max-height: 22px;" type="text"
+                        class="txtMoney form-control text-center price-order" 
+                        value="<?php echo number_format($product['prd_origin_price']); ?>">
+                </td>
                 <td class="text-center total-money"><?php echo $product['prd_sell_price']; ?></td>
                 <td class="text-center"><i class="fa fa-trash-o del-pro-order"></i></td>
             </tr>
@@ -203,6 +211,7 @@ class Import extends CI_Controller
                     }
 
                     $product = $this->db->select('prd_sls,prd_origin_price')->from('products')->where('ID', $item['id'])->get()->row_array();
+                    
                     $sls['prd_sls'] = $product['prd_sls'] + $item['quantity'];
                     $total_price += ($item['price'] * $item['quantity']);
                     $total_quantity += $item['quantity'];
@@ -217,7 +226,6 @@ class Import extends CI_Controller
                     $total_price += ($item['price'] * $item['quantity']);
                     $total_quantity += $item['quantity'];
                 }
-
             $input['total_quantity'] = $total_quantity;
             $input['total_price'] = $total_price;
             $lack = $total_price - $input['payed'] - $input['discount'];

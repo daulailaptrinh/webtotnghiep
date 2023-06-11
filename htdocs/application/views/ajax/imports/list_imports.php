@@ -118,7 +118,7 @@
                                 <table class="table table-striped table-bordered table-hover dataTable">
                                     <thead>
                                     <tr role="row">
-                                        <th class="text-center">STT</th>
+                                        <th class="text-center">STT111</th>
                                         <th class="text-left hidden-768">Mã sản phẩm</th>
                                         <th class="text-left">Tên sản phẩm</th>
                                         <th class="text-center">Số lượng</th>

@@ -13,7 +13,12 @@
             <ul class="nav navbar-nav navbar-right">
                 <li>
                     <label style="margin: 13px 15px; color: white">
-                        Cửa hàng: <?php echo cms_getNamestockbyID($user['store_id']); ?>
+                    <?php 
+                        if ($user['group_id'] != 1)
+                        {
+                            echo "Cửa hàng: "; 
+                            echo cms_getNamestockbyID($user['store_id']); 
+                        }?>
                     </label>
                 </li>
                 
@@ -22,6 +27,7 @@
                        aria-expanded="false"><span class="hello">Xin chào, </span><?php echo (isset($user)) ?
                             $user['display_name'] : $user['username']; ?><span class="caret"></span></a>
                     <ul class="dropdown-menu">
+                        <li class="current-user" style="display:none;"><?php echo $user['id'] ?></li>
                         <li><a href="account"><i class="fa fa-user"></i>Tài khoản</a></li>
                         <li><a href="authentication/logout"><i class="fa fa-power-off"></i>Thoát</a></li>
                     </ul>
@@ -30,3 +36,4 @@
         </div>
     </div>
 </nav>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>

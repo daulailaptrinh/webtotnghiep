@@ -22,7 +22,7 @@
                         <td class="text-center"><?php echo $nstt++; ?></td>
                         <td><?php echo $product['prd_code']; ?></td>
                         <td><?php echo $product['prd_name']; ?></td>
-                        <td class="text-center" style="max-width: 30px;"><?php echo $product['quantity']; ?> </td>
+                        <td class="text-center" style="max-width: 30px;"><?php echo $product['quantity']; ?></td>
                         <td class="text-center price-order"><?php echo cms_encode_currency_format($product['price']); ?></td>
                         <td class="text-center total-money"><?php echo cms_encode_currency_format($product['price'] * $product['quantity']); ?></td>
                     </tr>

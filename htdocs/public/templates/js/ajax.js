@@ -2219,7 +2219,7 @@ function cms_save_orders(type) {
         $store_id = $('#store-id').val();
         $date = $('#date-order').val();
         $note = $('#note-order').val();
-        $sale_id = $('#sale_id').val();
+        $sale_id = $('.current-user').val();
         $payment_method = $("input:radio[name ='method-pay']:checked").val();
         $discount = cms_decode_currency_format(typeof $('input.discount-order').val() === 'undefined' ? 0 : $('input.discount-order').val());
         $customer_pay = cms_decode_currency_format($('.customer-pay').val());

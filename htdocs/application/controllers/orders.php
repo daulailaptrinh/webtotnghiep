@@ -612,18 +612,51 @@ class Orders extends CI_Controller
         $id = $this->input->post('id');
         $seq = $this->input->post('seq');
         $product = $this->db->from('products')->where('ID', $id)->get()->row_array();
+        $discount = $this->db->from('discount')->where('product', $id)->get()->row_array();
         if (isset($product) && count($product) != 0) {
             ob_start(); ?>
             <tr data-id="<?php echo $product['ID']; ?>">
                 <td class="text-center seq"><?php echo $seq; ?></td>
                 <td><?php echo $product['prd_code']; ?></td>
                 <td><?php echo $product['prd_name']; ?></td>
-                <td class="text-center" style="max-width: 30px;"><input style="max-height: 22px;" type="text"
-                                                                        class="txtNumber form-control quantity_product_order text-center"
-                                                                        value="1"></td>
-                <td class="text-center price-order"><?php echo number_format($product['prd_sell_price']); ?></td>
-                <td style="display: none;"
-                    class="text-center price-order-hide"><?php echo $product['prd_sell_price']; ?></td>
+                <!-- Số lượng sản phẩm -->
+                <td class="text-center" style="max-width: 30px;">
+                    <input style="max-height: 22px;" type="text"
+                           class="txtNumber form-control quantity_product_order text-center"
+                           value="1">
+                </td>
+                <td class="text-center price-order">
+                    <?php
+                            if ($discount != NULL)
+                            {
+                                echo "<p style='text-decoration: line-through; display: inline;'>";
+                                echo number_format($product['prd_sell_price']);
+                                echo "</p>";
+
+                                echo "<p style='display: inline;'>  -".number_format($discount['percent'])."%</p>";
+
+                                echo "<p>";
+                                echo number_format((100-$discount['percent'])/100.0 * $product['prd_sell_price']);
+                                echo "</p>";
+                            }
+                            else
+                            {
+                                echo number_format($product['prd_sell_price']);
+                            }
+                    ?>
+                </td>
+                <td style="display: none;" class="text-center price-order-hide">
+                    <?php
+                            if ($discount != NULL)
+                            {
+                                echo (100-$discount['percent'])/100.0 * $product['prd_sell_price'];
+                            }
+                            else
+                            {
+                                echo $product['prd_sell_price'];
+                            }
+                    ?>
+                </td>
                 <td class="text-center total-money"><?php echo $product['prd_sell_price']; ?></td>
                 <td class="text-center"><i class="fa fa-trash-o del-pro-order"></i></td>
             </tr>
@@ -661,9 +694,15 @@ class Orders extends CI_Controller
                     }
 
                     $product = $this->db->from('products')->where('ID', $item['id'])->get()->row_array();
+                    $discount = $this->db->from('discount')->where('product', $item['id'])->get()->row_array();
+                    $discount_money = 0;
+                    if ($discount != NULL)
+                    {
+                        $discount_money = $product['prd_sell_price'] * $discount['percent'] / 100.0;
+                    }
                     $sls['prd_sls'] = $product['prd_sls'] - $item['quantity'];
                     $item['price'] = $product['prd_sell_price'];
-                    $total_price += ($item['price'] - $item['discount']) * $item['quantity'];
+                    $total_price += ($item['price'] - $discount_money) * $item['quantity'];
                     $total_origin_price += $product['prd_origin_price']*$item['quantity'];
                     $total_quantity +=$item['quantity'];
                     $this->db->where('ID', $item['id'])->update('products', $sls);

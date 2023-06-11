@@ -1,31 +1,34 @@
-<button type="button" class="btn btn-default btn-hide-edit" onclick="cms_paging_order_by_customer_id(1)"><i class="fa fa-arrow-left"></i> Trở về
+<button type="button" class="btn btn-default btn-hide-edit" onclick="cms_paging_order_by_customer_id(1)"><i
+        class="fa fa-arrow-left"></i> Trở về
 </button>
 <div class="row">
     <div class="col-md-8">
         <table class="table table-bordered table-striped" style="margin-top: 30px;">
             <thead>
-            <tr>
-                <th class="text-center">STT</th>
-                <th>Mã hàng</th>
-                <th>Tên sản phẩm</th>
-                <th class="text-center">Số lượng</th>
-                <th class="text-center">Giá bán</th>
-                <th class="text-center">Thành tiền</th>
-            </tr>
+                <tr>
+                    <th class="text-center">STT</th>
+                    <th>Mã hàng</th>
+                    <th>Tên sản phẩm</th>
+                    <th class="text-center">Số lượng</th>
+                    <th class="text-center">Giá bán</th>
+                    <th class="text-center">Thành tiền111</th>
+                </tr>
             </thead>
             <tbody>
-            <?php if (isset($_list_products) && count($_list_products)) :
+                <?php if (isset($_list_products) && count($_list_products)) :
                 $nstt = 1;
                 foreach ($_list_products as $product) :
                     ?>
-                    <tr data-id="<?php echo $product['ID']; ?>">
-                        <td class="text-center"><?php echo $nstt++; ?></td>
-                        <td><?php echo $product['prd_code']; ?></td>
-                        <td><?php echo $product['prd_name']; ?></td>
-                        <td class="text-center" style="max-width: 30px;"><?php echo $product['quantity']; ?> </td>
-                        <td class="text-center price-order"><?php echo cms_encode_currency_format($product['price']); ?></td>
-                        <td class="text-center total-money"><?php echo cms_encode_currency_format($product['price'] * $product['quantity']); ?></td>
-                    </tr>
+                <tr data-id="<?php echo $product['ID']; ?>">
+                    <td class="text-center"><?php echo $nstt++; ?></td>
+                    <td><?php echo $product['prd_code']; ?></td>
+                    <td><?php echo $product['prd_name']; ?></td>
+                    <td class="text-center" style="max-width: 30px;"><?php echo $product['quantity']; ?> </td>
+                    <td class="text-center price-order"><?php echo cms_encode_currency_format($product['price']); ?>
+                    </td>
+                    <td class="text-center total-money">
+                        <?php echo cms_encode_currency_format($product['price'] * $product['quantity']); ?></td>
+                </tr>
                 <?php endforeach; endif; ?>
             </tbody>
         </table>
@@ -72,8 +75,8 @@
                                 <label>Ghi chú</label>
                             </div>
                             <div class="col-md-7">
-                                    <textarea readonly id="note-order" cols="" class="form-control" rows="3"
-                                              style="border-radius: 0;"><?php echo $data['_order']['notes']; ?></textarea>
+                                <textarea readonly id="note-order" cols="" class="form-control" rows="3"
+                                    style="border-radius: 0;"><?php echo $data['_order']['notes']; ?></textarea>
                             </div>
                         </div>
                     </div>
@@ -93,11 +96,11 @@
                             </div>
                             <div class="col-md-7">
                                 <div class="input-group">
-                                    <input disabled type="radio" class="payment-method" name="method-pay"
-                                           value="1" <?php echo ($data['_order']['payment_method'] == 1) ? 'checked' : ''; ?>>
+                                    <input disabled type="radio" class="payment-method" name="method-pay" value="1"
+                                        <?php echo ($data['_order']['payment_method'] == 1) ? 'checked' : ''; ?>>
                                     Tiền mặt &nbsp;
-                                    <input disabled type="radio" class="payment-method" name="method-pay"
-                                           value="2" <?php echo ($data['_order']['payment_method'] == 2) ? 'checked' : ''; ?>>
+                                    <input disabled type="radio" class="payment-method" name="method-pay" value="2"
+                                        <?php echo ($data['_order']['payment_method'] == 2) ? 'checked' : ''; ?>>
                                     CK&nbsp;
                                 </div>
 
@@ -144,8 +147,7 @@
                                 <label>Còn nợ</label>
                             </div>
                             <div class="col-md-7">
-                                <div
-                                    class=""><?php echo cms_encode_currency_format($data['_order']['lack']); ?></div>
+                                <div class=""><?php echo cms_encode_currency_format($data['_order']['lack']); ?></div>
                             </div>
                         </div>
                     </div>

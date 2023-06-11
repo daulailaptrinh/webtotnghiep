@@ -117,7 +117,7 @@
                                         <th class="text-left">Tên sản phẩm</th>
                                         <th class="text-center">Số lượng</th>
                                         <th class="text-center">Giá bán</th>
-                                        <th class="text-center ">Thành tiền</th>
+                                        <th class="text-center ">Thành tiền111</th>
                                     </tr>
                                     </thead>
                                     <tbody>

@@ -109,14 +109,12 @@
 <div class="row" style="margin: 20px 0; overflow: hidden; ">
     <div class="chart-report">
         <div class="row">
-            <div class="col-md-4">
-                <div class="panel panel-default">
-                    <div class="panel-heading"><i class="fa fa-align-left"></i>Biểu đồ doanh số tuần</div>
-                    <div class="panel-body">
-                        Loading ...
-                    </div>
-                </div>
-            </div>
+        <div class="panel panel-default">
+    <div class="panel-heading"><i class="fa fa-align-left"></i>Biểu đồ doanh số tuần</div>
+    <div class="panel-body">
+        <canvas id="weekly-sales-chart"></canvas>
+    </div>
+</div>
             <div class="col-md-4">
                 <div class="panel panel-default">
                     <div class="panel-heading"><i class="fa fa-globe"></i>Thông tin từ web</div>

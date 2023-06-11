@@ -135,16 +135,11 @@
                             </div>
                             <div class="form-group marg-bot-10 clearfix">
                                 <div style="padding:0px" class="col-md-4">
-                                    <label>NV bán hàng</label>
+                                    <label></label>
                                 </div>
-                                <div class="col-md-8">
-                                    <select class="form-control" id="sale_id">
-                                        <option value="">Chọn NV bán hàng</option>
-                                        <?php foreach ($data as $item) { ?>
-                                        <option value="<?php echo $item['id']; ?>"><?php echo $item['display_name']; ?>
-                                        </option>
-                                        <?php } ?>
-                                    </select>
+                                <div class="col-md-8" id="sale_id">
+                                    
+                                
                                 </div>
                             </div>
                             <div class="form-group marg-bot-10 clearfix">

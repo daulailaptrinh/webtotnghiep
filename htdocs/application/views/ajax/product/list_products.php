@@ -38,7 +38,28 @@
                 <td class="text-center"><?php echo $item['prd_code']; ?></td>
                 <td class="text-center"><?php echo $item['prd_sls']; ?></td>
                 <td class="text-right"
-                    style="font-weight: bold;"><?php echo number_format($item['prd_sell_price']); ?></td>
+                    style="font-weight: bold;">
+                <?php
+                $product1 = $this->db->from('products')->where('prd_code', $item['prd_code'])->get()->row_array();
+                $discount = $this->db->from('discount')->where('product', $product1['ID'])->get()->row_array();
+                if ($discount != NULL)
+                {
+                    echo "<p style='text-decoration: line-through; display: inline;'>";
+                    echo number_format($product1['prd_sell_price']);
+                    echo "</p>";
+
+                    echo "<p style='display: inline;'>  -".number_format($discount['percent'])."%</p>";
+
+                    echo "<p>";
+                    echo number_format((100-$discount['percent'])/100.0 * $product1['prd_sell_price']);
+                    echo "</p>";
+                }
+                else
+                {
+                    echo number_format($product1['prd_sell_price']);
+                }
+                ?>
+                </td>
                 <td><?php echo cms_getNamegroupbyID($item['prd_group_id']); ?></td>
                 <td><?php echo cms_getNamemanufacturebyID($item['prd_manufacture_id']); ?></td>
 <!--                <td class="text-center"-->
