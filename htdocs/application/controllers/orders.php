@@ -142,6 +142,7 @@ class Orders extends CI_Controller
         $data_post = $this->input->post('data');
         $data_template = $this->db->select('content')->from('templates')->where('id', $data_post['id_template'])->limit(1)->get()->row_array();
         $data_order = $this->db->from('orders')->where('ID', $data_post['id_order'])->get()->row_array();
+        $nhanvien = $this->db->from('users')->where('ID', $data_order['user_init'])->get()->row_array();
         $customer_name = '';
         $customer_phone = '';
         $customer_address = '';
@@ -165,10 +166,9 @@ class Orders extends CI_Controller
         $data_template['content'] = str_replace("{Chiec_Khau}", $this->cms_common->cms_encode_currency_format($data_order['coupon']), $data_template['content']);
         $data_template['content'] = str_replace("{Tong_Tien}", $this->cms_common->cms_encode_currency_format($data_order['total_money'] - $data_order['coupon']), $data_template['content']);
         $data_template['content'] = str_replace("{Khach_Dua}", $this->cms_common->cms_encode_currency_format($data_order['customer_pay']), $data_template['content']);
-        $data_template['content'] = str_replace("{Con_No}", $this->cms_common->cms_encode_currency_format($data_order['lack']), $data_template['content']);
         $data_template['content'] = str_replace("{Ma_Don_Hang}", $data_order['output_code'], $data_template['content']);
         $data_template['content'] = str_replace("{Ghi_Chu}", $data_order['notes'], $data_template['content']);
-        $data_template['content'] = str_replace("{So_Tien_Bang_Chu}", $this->convert_number_to_words($data_order['lack']), $data_template['content']);
+        $data_template['content'] = str_replace("{Ten_Nhan_Vien}", $nhanvien['display_name'], $data_template['content']);
 
         $detail ='';
         $number = 1;
@@ -176,6 +176,11 @@ class Orders extends CI_Controller
             $list_products = json_decode($data_order['detail_order'], true);
             foreach ($list_products as $product) {
                 $prd = cms_finding_productbyID($product['id']);
+                $discount = $this->db->from('discount')->where('product', $product['id'])->get()->row_array();
+                if ($discount != NULL)
+                {
+                    $product['price'] -= $product['price'] * $discount['percent'] / 100.0;
+                }
                 $quantity = $product['quantity'];
                 $total = $quantity*$product['price'];
                 $detail = $detail.'<tr ><td  style="text-align:center;">'.$number++.'</td><td  style="text-align:center;">'.$prd['prd_name'].'</td><td  style="text-align:center;">'.$this->cms_common->cms_encode_currency_format($product['price']).'</td><td style = "text-align:center">'.$quantity.'</td ><td style="text-align:center;">'.$this->cms_common->cms_encode_currency_format($total).'</td ></tr>';
