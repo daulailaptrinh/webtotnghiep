@@ -59,7 +59,7 @@
                                     <label>Số lượng</label>
                                     <input type="text" id="prd_sls" value="" placeholder="0"
                                            class="form-control text-right txtNumber"/>
-</div>
+                                </div>
                             </div>
 
                             <div class="form-group clearfix">

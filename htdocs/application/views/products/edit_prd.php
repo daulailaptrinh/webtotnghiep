@@ -62,20 +62,9 @@
                                            class="form-control text-right txtNumber"/>
                                 </div>
                                 <div class="col-md-6 padd-right-0">
-                                    <label class="checkbox" style="display: block;"><input type="checkbox"
-                                                                                           id="prd_inventory"
-                                                                                           class="checkbox"
-                                                                                           name="confirm"
-                                                                                           value="1"
-                                            <?php if (isset($data['_detail_product']) and $data['_detail_product']['prd_inventory'] == 1) echo 'checked="checked"' ?>
-                                            ><span></span> Theo dõi tồn kho?</label>
-                                    <label class="checkbox"><input type="checkbox"
-                                                                   id="prd_allownegative"
-                                                                   class="checkbox"
-                                                                   name="confirm"
-                                                                   value="1"
-                                            <?php if (isset($data['_detail_product']) and $data['_detail_product']['prd_allownegative'] == 1) echo 'checked="checked"' ?>>
-                                        <span></span> Cho phép bán âm?</label>
+                                    <label>Phần trăm khuyến mãi</label>
+                                    <input type="text" id="percent_discount" class="form-control "
+                                           placeholder="<?php echo $data['_percent'] ?>"/>
                                 </div>
                             </div>
 
@@ -207,8 +196,7 @@
                         </div>
                         <div class="col-md-12 padd-20">
                             <h4 style="margin-top: 0;">Mô tả
-                                <small style="font-style: italic;">(Nhập thông tin mô tả chi tiết hơn để khách
-                                    hàng hiểu hàng hoá của bạn)
+                                <small style="font-style: italic;">(Nhập thông tin mô tả chi tiết hơn để khách hàng hiểu hàng hoá của bạn)
                                 </small>
                             </h4>
                             <!--                                    <textarea id="ck_editor" id="prd_description"></textarea>-->

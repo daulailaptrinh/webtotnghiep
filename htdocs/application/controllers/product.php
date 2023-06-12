@@ -38,6 +38,19 @@ class Product extends CI_Controller
         $this->load->view('products/add_prd', isset($data) ? $data : null);
     }
 
+
+    public function cms_vcrdiscount()
+    {
+        if ($this->auth == null) $this->cms_common_string->cms_redirect(CMS_BASE_URL . 'backend');
+        $sls_group = $this->cms_nestedset->dropdown('products_group', NULL, 'manufacture');
+        $sls_manufacture = $this->db->from('products_manufacture')->get()->result_array();
+        $products = $this->db->from('products')->get()->result_array();
+        $data['data']['_prd_group'] = $sls_group;
+        $data['data']['_prd_manufacture'] = $sls_manufacture;
+        $data['data']['_products'] = $products;
+        $this->load->view('products/add_discount', isset($data) ? $data : null);
+    }
+
     public function cms_clone_product($id)
     {
         if ($this->auth == null)
@@ -62,12 +75,19 @@ class Product extends CI_Controller
 
         $id = (int)$id;
         $product = $this->db->from('products')->where('ID', $id)->get()->row_array();
+        $discount = $this->db->from('discount')->where('product', $id)->get()->row_array();
+        $percent = 0;
+        if ($discount != NULL)
+        {
+            $percent = $discount['percent'];
+        }
         if (!empty($product) && count($product)) {
             $data['data']['_detail_product'] = $product;
             $sls_group = $this->cms_nestedset->dropdown('products_group', NULL, 'manufacture');
             $sls_manufacture = $this->db->from('products_manufacture')->get()->result_array();
             $data['data']['_prd_group'] = $sls_group;
             $data['data']['_prd_manufacture'] = $sls_manufacture;
+            $data['data']['_percent'] = $percent;
             $this->load->view('products/edit_prd', isset($data) ? $data : null);
         }
     }
@@ -356,12 +376,46 @@ class Product extends CI_Controller
         }
     }
 
+    public function cms_add_discount()
+    {
+        $data = $this->input->post('data');
+        $data = $this->cms_common_string->allow_post($data, ['product', 'percent']);
+        $check_code = $this->db->select('product')->from('discount')->where('product', $data['product'])->get()->row_array();
+        if (!empty($check_code) && count($check_code)) {
+            echo $this->messages = 'Mã sản phẩm ' . $data['product'] . ' đã có khuyến mãi . Vui lòng chọn mã khác.';
+        } else {
+            $this->db->insert('discount', $data);
+
+            if ($this->db->trans_status() === FALSE)
+            {
+                $this->db->trans_rollback();
+                echo $this->messages = "0";
+            }
+            else
+            {
+                $this->db->trans_commit();
+                echo $this->messages = "1";
+            }
+        }
+    }
+
     public function cms_update_product($id)
     {
         $data = $this->input->post('data');
-        $data = $this->cms_common_string->allow_post($data, ['prd_code', 'prd_name', 'prd_sls', 'prd_inventory', 'prd_allownegative', 'prd_origin_price', 'prd_sell_price', 'prd_group_id', 'prd_manufacture_id', 'prd_vat', 'prd_image_url', 'prd_descriptions', 'display_website', 'prd_new', 'prd_hot', 'prd_highlight']);
-        $data['user_upd'] = $this->auth['id'];
-        $this->db->where('ID', $id)->update('products', $data);
+        $data1 = $this->cms_common_string->allow_post($data, ['prd_code', 'prd_name', 'prd_sls', 'prd_inventory', 'prd_allownegative', 'prd_origin_price', 'prd_sell_price', 'prd_group_id', 'prd_manufacture_id', 'prd_vat', 'prd_image_url', 'prd_descriptions', 'display_website', 'prd_new', 'prd_hot', 'prd_highlight']);
+        $data2 = $this->cms_common_string->allow_post($data, ['product', 'percent']);
+        $data1['user_upd'] = $this->auth['id'];
+        $this->db->where('ID', $id)->update('products', $data1);
+
+        $check = $this->db->from('discount')->where('product', $id)->get()->result_array();
+        if ($check != NULL)
+        {
+            $this->db->update('discount', $data2);
+        }
+        else
+        {
+            $this->db->insert('discount', $data2);
+        }
         echo $this->messages = "1";
     }
 

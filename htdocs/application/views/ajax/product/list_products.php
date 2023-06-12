@@ -42,7 +42,7 @@
                 <?php
                 $product1 = $this->db->from('products')->where('prd_code', $item['prd_code'])->get()->row_array();
                 $discount = $this->db->from('discount')->where('product', $product1['ID'])->get()->row_array();
-                if ($discount != NULL)
+                if (($discount != NULL) && ($discount['percent'] > 0))
                 {
                     echo "<p style='text-decoration: line-through; display: inline;'>";
                     echo number_format($product1['prd_sell_price']);

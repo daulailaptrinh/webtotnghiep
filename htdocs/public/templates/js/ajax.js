@@ -1284,6 +1284,24 @@ function cms_vcrproduct() {
     cms_adapter_ajax($param);
 }
 
+
+/*
+ * DISCOUNT
+ /***************************/
+function cms_vcrdiscount() {
+    var $param = {
+        'type': 'POST',
+        'url': 'product/cms_vcrdiscount',
+        'data': null,
+        'callback': function (data) {
+            $('.products').html(data);
+            cms_product_group_show();
+            cms_product_manufacture_show();
+        }
+    };
+    cms_adapter_ajax($param);
+}
+
 function cms_create_manufacture($cont) {
     'user strict';
     var $prd_manuf_name = $.trim($('#prd_manuf_name').val());
@@ -1575,6 +1593,43 @@ function cms_add_product(type) {
     }
 }
 
+function cms_add_discount() {
+    'use strict';
+    var $prd_id = $('#prd_id').val();
+    var $percent_discount = $('#percent_discount').val();
+    if (0 == 0)  {
+        var $data = {
+            'data': {
+                'product': $prd_id,
+                'percent': $percent_discount,
+            }
+        };
+        var $param = {
+            'type': 'POST',
+            'url': 'product/cms_add_discount/',
+            'data': $data,
+            'callback': function (data) {
+                if (data == '1') {
+                    if (1 == 1) {
+                        $('.ajax-success-ct').html('Tạo khuyến mãi thành công.').parent().fadeIn().delay(1000).fadeOut('slow');
+                        setTimeout(function () {
+                            $('.btn-back').trigger('click');
+                        }, 2000);
+                    } else {
+                        $('.ajax-success-ct').html('Tạo khuyến mãi thành công.').parent().fadeIn().delay(1000).fadeOut('slow');
+                        $('.products').find('input:text').val('');
+                        $('.products').find('input:checkbox').prop('checked', false);
+                    }
+                } else {
+                    $('.ajax-error-ct').html(data).parent().fadeIn().delay(1000).fadeOut('slow');
+                }
+            }
+        };
+        cms_adapter_ajax($param);
+    }
+}
+
+
 function cms_update_product($id) {
     'use strict';
     var $name = $.trim($('#prd_name').val());
@@ -1584,6 +1639,7 @@ function cms_update_product($id) {
     var $origin_price = cms_decode_currency_format($('#prd_origin_price').val());
     var $sell_price = cms_decode_currency_format($('#prd_sell_price').val());
     var $group_id = $('#prd_group_id').val();
+    var $percent = $('#percent_discount').val();
     var $manufacture_id = $('#prd_manufacture_id').val();
     var $img_afurl = $('#prd_image_urls').attr('src');
     var $img_url = (typeof $img_afurl == 'undefined' ) ? '' : $img_afurl;
@@ -1610,7 +1666,9 @@ function cms_update_product($id) {
                 'display_website': $display_wb,
                 'prd_new': $new,
                 'prd_hot': $hot,
-                'prd_highlight': $highlight
+                'prd_highlight': $highlight,
+                'percent': $percent,
+                'product': $id
             }
         };
         var $param = {
