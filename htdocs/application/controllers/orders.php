@@ -708,6 +708,7 @@ class Orders extends CI_Controller
                     $sls['prd_sls'] = $product['prd_sls'] - $item['quantity'];
                     $item['price'] = $product['prd_sell_price'];
                     $total_price += ($item['price'] - $discount_money) * $item['quantity'];
+                    $item['price'] = $item['price'] - $discount_money;
                     $total_origin_price += $product['prd_origin_price']*$item['quantity'];
                     $total_quantity +=$item['quantity'];
                     $this->db->where('ID', $item['id'])->update('products', $sls);

@@ -110,9 +110,10 @@
     <div class="chart-report">
         <div class="row">
         <div class="panel panel-default">
-    <div class="panel-heading"><i class="fa fa-align-left"></i>Biểu đồ doanh số tuần</div>
+    <div class="panel-heading"><i class="fa fa-align-left"></i>Bản đồ các cửa hàng</div>
     <div class="panel-body">
-        <canvas id="weekly-sales-chart"></canvas>
+        <!-- <canvas id="weekly-sales-chart"></canvas> -->
+        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d31431.33374870014!2d105.775104!3d10.0237312!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1svi!2s!4v1686617762997!5m2!1svi!2s" width="800" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
 </div>
             <div class="col-md-4">

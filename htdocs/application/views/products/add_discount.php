@@ -59,7 +59,7 @@
                                 <div class="col-md-6 padd-right-0">
                                     <label>Phần trăm khuyến mãi</label>
                                     <input type="text" id="percent_discount" class="form-control "
-                                           placeholder=""/>
+                                           placeholder="0"/>
                                 </div>
                             </div>
                             <div class="form-group clearfix">

@@ -63,7 +63,7 @@
                                 </div>
                                 <div class="col-md-6 padd-right-0">
                                     <label>Phần trăm khuyến mãi</label>
-                                    <input type="text" id="percent_discount" class="form-control "
+                                    <input type="text" id="percent_discount1" class="form-control"
                                            placeholder="<?php echo $data['_percent'] ?>"/>
                                 </div>
                             </div>

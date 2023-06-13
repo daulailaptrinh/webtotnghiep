@@ -406,8 +406,7 @@ class Product extends CI_Controller
         $data2 = $this->cms_common_string->allow_post($data, ['product', 'percent']);
         $data1['user_upd'] = $this->auth['id'];
         $this->db->where('ID', $id)->update('products', $data1);
-
-        $check = $this->db->from('discount')->where('product', $id)->get()->result_array();
+        $check = $this->db->from('discount')->where('product', $id)->get()->result();
         if ($check != NULL)
         {
             $this->db->update('discount', $data2);

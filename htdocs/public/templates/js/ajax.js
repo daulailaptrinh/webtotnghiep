@@ -1639,7 +1639,7 @@ function cms_update_product($id) {
     var $origin_price = cms_decode_currency_format($('#prd_origin_price').val());
     var $sell_price = cms_decode_currency_format($('#prd_sell_price').val());
     var $group_id = $('#prd_group_id').val();
-    var $percent = $('#percent_discount').val();
+    var $percent = $('#percent_discount1').val();
     var $manufacture_id = $('#prd_manufacture_id').val();
     var $img_afurl = $('#prd_image_urls').attr('src');
     var $img_url = (typeof $img_afurl == 'undefined' ) ? '' : $img_afurl;
@@ -1648,6 +1648,7 @@ function cms_update_product($id) {
     var $new = cms_get_valCheckbox('prd_new', 'id');
     var $hot = cms_get_valCheckbox('prd_hot', 'id');
     var $highlight = cms_get_valCheckbox('prd_highlight', 'id');
+    alert($id);
     if ($name.length == 0) {
         $('.ajax-error-ct').html('Vui lòng nhập tên sản phẩm.').parent().fadeIn().delay(1000).fadeOut('slow');
     } else {
