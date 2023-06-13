@@ -409,7 +409,7 @@ class Product extends CI_Controller
         $check = $this->db->from('discount')->where('product', $id)->get()->result();
         if ($check != NULL)
         {
-            $this->db->update('discount', $data2);
+            $this->db->where('product', $id)->update('discount', $data2);
         }
         else
         {
