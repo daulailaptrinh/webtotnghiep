@@ -629,6 +629,7 @@ function cms_upfunc() {
 function cms_crgroup() {
     "use strict";
     $('.btn-crgroup').on('click', function (e) {
+        alert("Hello");
         e.preventDefault();
         var $group_name = $.trim($('#group-name').val());
 

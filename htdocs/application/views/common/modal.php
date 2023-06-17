@@ -173,13 +173,13 @@
                             <label for="group-name">Tên Nhóm</label>
                         </div>
                         <div class="col-sm-9">
-                            <input type="text" id="group-name" name="group_name" class="form-control" value=""
-                                placeholder="Nhập tên nhóm người dùng">
+                            <input type="text" id="group-name" name="group_name" class="form-control" value="" placeholder="Nhập tên nhóm người dùng">
                             <span style=" color: red; font-style: italic;" class="error error-group_name"></span>
                         </div>
                     </div>
                 </form>
             </div>
+            <!--Thêm nhóm mới-->
             <div class="modal-footer">
                 <button type="button" class="btn btn-primary btn-sm btn-crgroup"><i class="fa fa-check"></i> Lưu
                 </button>

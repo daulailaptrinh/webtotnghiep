@@ -15,7 +15,9 @@
     </tr>
     </thead>
     <tbody>
-    <?php if (isset($data['_list_product']) && count($data['_list_product'])) :
+    <?php 
+    $check = $this->db->from('users')->where('id', $_SESSION['id'])->get()->row_array();
+    if (isset($data['_list_product']) && count($data['_list_product'])) :
         foreach ($data['_list_product'] as $key => $item) : ?>
             <tr>
                 <td class="text-center"><label class="checkbox" style="margin: 0;"><input type="checkbox"
@@ -64,6 +66,10 @@
                 <td><?php echo cms_getNamemanufacturebyID($item['prd_manufacture_id']); ?></td>
 <!--                <td class="text-center"-->
 <!--                    style="width: 35px;">--><?php //echo (!empty($item['prd_image_url'])) ? "<img src='{$item['prd_image_url']}' alt='{$item['prd_name']}' width='22' height='22' style='border-radius: 15px; padding: 3px; border: 1px solid #ccc;'/>" : '<i class="fa fa-cloud-upload" style="font-size: 18px; color: #337ab7; cursor: pointer; "></i>' ?><!--</td>-->
+                
+                <?php
+                if ($check['group_id'] == 1):
+                ?>
                 <td class="text-center">
                     <i title="Edit" onclick="cms_edit_product(<?php echo $item['ID'].','; ?>);" class="fa fa-edit yellow"
                        style="margin-right: 5px;"></i>
@@ -104,6 +110,9 @@
                         <?php
                     }
 
+                ?>
+                <?php
+                endif;
                 ?>
                 </td>
             </tr>

@@ -27,9 +27,14 @@
                        aria-expanded="false"><span class="hello">Xin chào, </span><?php echo (isset($user)) ?
                             $user['display_name'] : $user['username']; ?><span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li class="current-user" style="display:none;"><?php echo $user['id'] ?></li>
+                        <li class="current-user" id="current-user" style="display:none;">
+                        <?php
+                        session_start();
+                        $_SESSION['id'] = $user['id']; 
+                        echo $user['id']; ?></li>
                         <li><a href="account"><i class="fa fa-user"></i>Tài khoản</a></li>
                         <li><a href="authentication/logout"><i class="fa fa-power-off"></i>Thoát</a></li>
+                        
                     </ul>
                 </li>
             </ul>
