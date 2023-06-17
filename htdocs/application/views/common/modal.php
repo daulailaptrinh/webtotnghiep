@@ -181,7 +181,7 @@
             </div>
             <!--Thêm nhóm mới-->
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary btn-sm btn-crgroup"><i class="fa fa-check"></i> Lưu
+                <button type="button" class="btn btn-primary btn-sm btn-crgroup" onclick="cms_crgroup()"><i class="fa fa-check"></i> Lưu
                 </button>
                 <button type="button" class="btn btn-default btn-sm btn-close" data-dismiss="modal"><i
                         class="fa fa-undo"></i> Bỏ qua

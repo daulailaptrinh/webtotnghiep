@@ -626,14 +626,13 @@ function cms_upfunc() {
 /*
  * Thêm nhóm người dùng
  /****************************************/
-function cms_crgroup() {
+ function cms_crgroup() {
     "use strict";
     $('.btn-crgroup').on('click', function (e) {
-        alert("Hello");
         e.preventDefault();
         var $group_name = $.trim($('#group-name').val());
 
-        if ($group_name.length == 0) {
+        if ($group_name.length === 0) {
             $('.error-group_name').text('Vui lòng nhập tên nhóm người dùng');
         } else {
             $('.error-group_name').text('');
@@ -641,25 +640,28 @@ function cms_crgroup() {
 
         if ($group_name) {
             var $param = {
-                'type': 'POST',
-                'url': 'ajax/cms_crgroup',
-                'data': {'group_name': $group_name},
-                'callback': function (data) {
-                    if (data != '1') {
+                type: 'POST',
+                url: 'ajax/cms_crgroup',
+                data: { 'group_name': $group_name },
+                success: function (data) {
+                    if (data !== '1') {
                         $('.ajax-error-ct').html('Nhóm người dùng đã tồn tại hoặc không đúng!').parent().fadeIn().delay(1000).fadeOut('slow');
                     } else {
                         $('.btn-close').trigger('click');
                         cms_upgroup();
                         cms_radiogroup();
                         $('.ajax-success-ct').html('Bạn đã tạo mới Nhóm người dùng thành công!').parent().fadeIn().delay(1000).fadeOut('slow');
-
                     }
+                },
+                error: function () {
+                    // Xử lý lỗi khi gửi yêu cầu ajax
                 }
             };
-            cms_adapter_ajax($param);
+            $.ajax($param);
         }
     });
 }
+
 
 function cms_crstore() {
     "use strict";
