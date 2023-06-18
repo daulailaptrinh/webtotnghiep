@@ -632,7 +632,7 @@ class Orders extends CI_Controller
                 </td>
                 <td class="text-center price-order">
                     <?php
-                            if ($discount != NULL)
+                            if (($discount != NULL) && ($discount['percent'] != 0))
                             {
                                 echo "<p style='text-decoration: line-through; display: inline;'>";
                                 echo number_format($product['prd_sell_price']);
