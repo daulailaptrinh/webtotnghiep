@@ -1651,7 +1651,6 @@ function cms_update_product($id) {
     var $new = cms_get_valCheckbox('prd_new', 'id');
     var $hot = cms_get_valCheckbox('prd_hot', 'id');
     var $highlight = cms_get_valCheckbox('prd_highlight', 'id');
-    alert($id);
     if ($name.length == 0) {
         $('.ajax-error-ct').html('Vui lòng nhập tên sản phẩm.').parent().fadeIn().delay(1000).fadeOut('slow');
     } else {
