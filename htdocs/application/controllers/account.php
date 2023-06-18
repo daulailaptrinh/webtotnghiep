@@ -42,7 +42,7 @@ class Account extends CI_Controller
         if ($this->_check_password($user_id, $data['oldpass'])) {
             $update['salt'] = $this->cms_common_string->random(69, true);
             $update['password'] = $this->cms_common_string->password_encode($data['newpass'], $update['salt']);
-            //$this->db->where('id', $user_id)->update('users', $update);
+            $this->db->where('id', $user_id)->update('users', $update);
             echo $this->messages = 1;
         }else
             echo $this->messages = 0;
