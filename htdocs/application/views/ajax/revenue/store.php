@@ -156,3 +156,80 @@
         <?php echo $_pagination_link; ?>
     </div>
 </div>
+
+
+
+
+
+
+
+<?php 
+    function convert_name($str) {
+		$str = preg_replace("/(à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ)/", 'a', $str);
+		$str = preg_replace("/(è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ)/", 'e', $str);
+		$str = preg_replace("/(ì|í|ị|ỉ|ĩ)/", 'i', $str);
+		$str = preg_replace("/(ò|ó|ọ|ỏ|õ|ô|ồ|ố|ộ|ổ|ỗ|ơ|ờ|ớ|ợ|ở|ỡ)/", 'o', $str);
+		$str = preg_replace("/(ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ)/", 'u', $str);
+		$str = preg_replace("/(ỳ|ý|ỵ|ỷ|ỹ)/", 'y', $str);
+		$str = preg_replace("/(đ)/", 'd', $str);
+		$str = preg_replace("/(À|Á|Ạ|Ả|Ã|Â|Ầ|Ấ|Ậ|Ẩ|Ẫ|Ă|Ằ|Ắ|Ặ|Ẳ|Ẵ)/", 'A', $str);
+		$str = preg_replace("/(È|É|Ẹ|Ẻ|Ẽ|Ê|Ề|Ế|Ệ|Ể|Ễ)/", 'E', $str);
+		$str = preg_replace("/(Ì|Í|Ị|Ỉ|Ĩ)/", 'I', $str);
+		$str = preg_replace("/(Ò|Ó|Ọ|Ỏ|Õ|Ô|Ồ|Ố|Ộ|Ổ|Ỗ|Ơ|Ờ|Ớ|Ợ|Ở|Ỡ)/", 'O', $str);
+		$str = preg_replace("/(Ù|Ú|Ụ|Ủ|Ũ|Ư|Ừ|Ứ|Ự|Ử|Ữ)/", 'U', $str);
+		$str = preg_replace("/(Ỳ|Ý|Ỵ|Ỷ|Ỹ)/", 'Y', $str);
+		$str = preg_replace("/(Đ)/", 'D', $str);
+		$str = preg_replace("/(\“|\”|\‘|\’|\,|\!|\&|\;|\@|\#|\%|\~|\`|\=|\_|\'|\]|\[|\}|\{|\)|\(|\+|\^)/", '-', $str);
+		$str = preg_replace("/( )/", '-', $str);
+		return $str;
+	}
+    // Hàm so sánh tùy chỉnh dựa trên thuộc tính "name" theo thu tu tang dan
+    function compareName($a, $b) {
+        return strcmp($a->name, $b->name);
+    }
+
+    if (isset($_list_stores) && count($_list_stores)) {
+        $data = array();
+        foreach ($_list_stores as $key => $item) {
+
+            $str_without_accents = convert_name(cms_getNamestockbyID($item['store_id']));
+
+            $myObj = new stdClass();
+            $myObj->name = $str_without_accents;
+            $myObj->total_money = cms_encode_currency_format($item['total_money']);
+            $myObj->total_debt = cms_encode_currency_format($item['total_debt']);
+
+            $myJSON = json_encode($myObj); // string
+            // echo $myJSON."<br>";
+            $object = json_decode($myJSON); // object
+            // echo gettype($object);
+
+            $data[] = $object; // mang chua cac object con
+
+            // Sắp xếp mảng theo thứ tự tăng dần dựa trên thuộc tính "name"
+            usort($data, 'compareName');
+        }
+    }      
+?>
+
+<label style="color: #428bca;font-size: 23px;">Biếu đồ doanh thu</label>
+
+<div id="chart" style="height: 250px;"></div>
+<script>
+    // Lấy dữ liệu từ PHP và chuyển đổi thành mảng JavaScript
+    var data = <?php echo json_encode($data); ?>;
+    // console.log(data);
+
+    new Morris.Bar({
+        // ID of the element in which to draw the chart.
+        element: 'chart',
+        // Chart data records -- each entry in this array corresponds to a point on the chart.
+        data: data,
+        // The name of the data record attribute that contains x-values.
+        xkey: 'name',
+        // A list of names of data record attributes that contain y-values.
+        ykeys: ['total_money','total_debt'],
+        // Labels for the ykeys -- will be displayed when you hover over the chart.
+        labels: ['Doanh thu','Nợ']
+    });
+</script>
