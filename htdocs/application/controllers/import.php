@@ -274,7 +274,7 @@ class Import extends CI_Controller
                     $report['input'] = $item['quantity'];
                     $report['stock'] = $stock['quantity'];
                     $report['total_money'] = $report['price']*$report['input'];
-                    $this->db->insert('report', $report);
+                    //$this->db->insert('report', $report);
                 }
             }
 

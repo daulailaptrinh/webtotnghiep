@@ -478,6 +478,8 @@ class Orders extends CI_Controller
         $id = (int)$id;
         $order = $this->db->from('orders')->where(['ID' => $id, 'deleted' => 0])->get()->row_array();
         $store_id = $order['store_id'];
+        $data = $this->input->post('data');
+        $note = $data['notes'];
         $this->db->trans_begin();
         $user_init = $this->auth['id'];
         if (isset($order) && count($order)) {
@@ -499,9 +501,9 @@ class Orders extends CI_Controller
                     $this->db->where(['transaction_id'=> $id,'product_id'=>$item['id'],'store_id' => $store_id])->update('report', ['deleted' => 1,'user_upd' => $user_init]);
                 }
 
-                $this->db->where('ID', $id)->update('orders', ['deleted' => 1,'user_upd' => $user_init]);
+                $this->db->where('ID', $id)->update('orders', ['deleted' => 1, 'notes' => $note, 'user_upd' => $user_init]);
             } else {
-                $this->db->where('ID', $id)->update('orders', ['deleted' => 1,'user_upd' => $user_init]);
+                $this->db->where('ID', $id)->update('orders', ['deleted' => 1, 'notes' => $note, 'user_upd' => $user_init]);
             }
         }
 

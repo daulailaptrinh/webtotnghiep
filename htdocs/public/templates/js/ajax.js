@@ -2345,10 +2345,16 @@ function cms_save_orders(type) {
 function cms_del_temp_order($id, $page) {
     var conf = confirm('Bạn chắc chắn muốn xóa đơn hàng này?');
     if (conf) {
+        var $note =  prompt("Nhập lý do xóa hóa đơn");
+        $data = {
+            'data': {
+                'notes': $note,
+            }
+        };
         var $param = {
             'type': 'POST',
             'url': 'orders/cms_del_temp_order/' + $id,
-            'data': null,
+            'data': $data,
             'callback': function (data) {
                 if (data == '1') {
                     cms_paging_order($page);

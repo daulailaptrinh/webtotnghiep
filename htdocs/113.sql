@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 13, 2023 at 09:43 AM
+-- Generation Time: Jun 18, 2023 at 11:12 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.0.28
 
@@ -60,14 +60,10 @@ CREATE TABLE `cms_discount` (
 --
 
 INSERT INTO `cms_discount` (`ID`, `product`, `percent`) VALUES
-(0, 120, 5),
-(0, 120, 5),
-(0, 120, 5),
-(0, 120, 5),
-(0, 120, 5),
-(0, 120, 5),
-(0, 120, 5),
-(0, 125, 20);
+(1, 120, 5),
+(9, 121, 0),
+(10, 125, 10),
+(11, 123, 10);
 
 -- --------------------------------------------------------
 
@@ -127,8 +123,8 @@ INSERT INTO `cms_inventory` (`store_id`, `product_id`, `quantity`, `user_init`, 
 (1, 122, 20, 2, NULL, '2023-05-31 11:26:23', NULL),
 (8, 123, 100, 2, NULL, '2023-06-13 13:52:29', NULL),
 (8, 124, 11, 2, 2, '2023-06-13 13:54:39', '2023-06-13 14:34:12'),
-(8, 120, -1, 2, 2, '2023-06-13 14:23:17', '2023-06-13 14:39:10'),
-(8, 121, -2, 2, 2, '2023-06-13 14:23:17', '2023-06-13 14:39:10'),
+(8, 120, -3, 2, 2, '2023-06-13 14:23:17', '2023-06-18 16:01:58'),
+(8, 121, -3, 2, 2, '2023-06-13 14:23:17', '2023-06-18 16:01:58'),
 (8, 125, 99, 2, 2, '2023-06-13 14:35:09', '2023-06-13 14:39:10'),
 (2, 120, -1, 25, NULL, '2023-06-13 14:40:58', NULL),
 (2, 121, -1, 25, NULL, '2023-06-13 14:40:58', NULL),
@@ -177,7 +173,9 @@ INSERT INTO `cms_orders` (`ID`, `output_code`, `customer_id`, `store_id`, `sell_
 (253, 'PX0000004', 0, 8, '2023-06-13 14:23:17', '', 1, 25978, 12111, 0, 25977, 25978, 3, 1, '[{\"id\":\"120\",\"quantity\":\"1\",\"price\":10000,\"discount\":\"0\"},{\"id\":\"121\",\"quantity\":\"1\",\"price\":15000,\"discount\":\"0\"},{\"id\":\"124\",\"quantity\":\"1\",\"price\":977.6800000000001,\"discount\":\"0\"}]', 1, 1, '2023-06-13 14:23:17', '2023-06-13 14:34:12', 2, 2, 0),
 (254, 'PX0000005', 0, 8, '2023-06-13 14:39:10', '', 1, 51500, 25000, 0, 51500, 51500, 4, 0, '[{\"id\":\"120\",\"quantity\":\"1\",\"price\":9500,\"discount\":\"0\"},{\"id\":\"125\",\"quantity\":\"1\",\"price\":12000,\"discount\":\"0\"},{\"id\":\"121\",\"quantity\":\"2\",\"price\":15000,\"discount\":\"0\"}]', 1, 0, '2023-06-13 14:39:10', '0000-00-00 00:00:00', 2, 0, 0),
 (255, 'PX0000006', 0, 1, '2023-06-13 14:40:28', '', 1, 110000, 57000, 0, 110000, 110000, 11, 0, '[{\"id\":\"121\",\"quantity\":\"1\",\"price\":15000,\"discount\":\"0\"},{\"id\":\"120\",\"quantity\":\"10\",\"price\":9500,\"discount\":\"0\"}]', 1, 0, '2023-06-13 14:40:28', '0000-00-00 00:00:00', 26, 0, 0),
-(256, 'PX0000007', 0, 2, '2023-06-13 14:40:58', '', 1, 56500, 28000, 0, 56500, 56500, 4, 0, '[{\"id\":\"120\",\"quantity\":\"1\",\"price\":9500,\"discount\":\"0\"},{\"id\":\"121\",\"quantity\":\"1\",\"price\":15000,\"discount\":\"0\"},{\"id\":\"122\",\"quantity\":\"1\",\"price\":20000,\"discount\":\"0\"},{\"id\":\"125\",\"quantity\":\"1\",\"price\":12000,\"discount\":\"0\"}]', 1, 0, '2023-06-13 14:40:58', '0000-00-00 00:00:00', 25, 0, 0);
+(256, 'PX0000007', 0, 2, '2023-06-13 14:40:58', '', 1, 56500, 28000, 0, 56500, 56500, 4, 0, '[{\"id\":\"120\",\"quantity\":\"1\",\"price\":9500,\"discount\":\"0\"},{\"id\":\"121\",\"quantity\":\"1\",\"price\":15000,\"discount\":\"0\"},{\"id\":\"122\",\"quantity\":\"1\",\"price\":20000,\"discount\":\"0\"},{\"id\":\"125\",\"quantity\":\"1\",\"price\":12000,\"discount\":\"0\"}]', 1, 0, '2023-06-13 14:40:58', '0000-00-00 00:00:00', 25, 0, 0),
+(257, 'PX0000008', 0, 8, '2023-06-18 14:44:45', '', 1, 9500, 5000, 0, 9500, 9500, 1, 0, '[{\"id\":\"120\",\"quantity\":\"1\",\"price\":9500,\"discount\":\"0\"}]', 1, 0, '2023-06-18 14:44:45', '0000-00-00 00:00:00', 2, 0, 0),
+(258, 'PX0000009', 0, 8, '2023-06-18 16:01:58', '', 1, 24500, 12000, 0, 24500, 24500, 2, 0, '[{\"id\":\"120\",\"quantity\":\"1\",\"price\":9500,\"discount\":\"0\"},{\"id\":\"121\",\"quantity\":\"1\",\"price\":15000,\"discount\":\"0\"}]', 1, 0, '2023-06-18 16:01:58', '0000-00-00 00:00:00', 2, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -241,8 +239,8 @@ CREATE TABLE `cms_products` (
 --
 
 INSERT INTO `cms_products` (`ID`, `prd_code`, `prd_name`, `prd_sls`, `prd_origin_price`, `prd_sell_price`, `prd_vat`, `prd_status`, `prd_inventory`, `prd_allownegative`, `prd_manufacture_id`, `prd_group_id`, `prd_image_url`, `prd_descriptions`, `prd_manuf_id`, `prd_hot`, `prd_new`, `prd_highlight`, `display_website`, `created`, `updated`, `user_init`, `user_upd`, `deleted`) VALUES
-(120, 'CF001', 'Cà phê đá', 88, 5000, 10000, 0, 1, 0, 0, 48, 138, 0, '', 0, 0, 0, 0, 0, '2023-05-31 11:02:16', '2023-06-13 14:40:58', 2, 2, 0),
-(121, 'CF002', 'Cà phê sữa', 96, 7000, 15000, 0, 1, 0, 0, 48, 138, 0, '', 0, 0, 0, 0, 0, '2023-05-31 11:02:59', '2023-06-13 14:40:58', 2, 2, 0),
+(120, 'CF001', 'Cà phê đá', 86, 5000, 10000, 0, 1, 0, 0, 48, 138, 0, '', 0, 0, 0, 0, 0, '2023-05-31 11:02:16', '2023-06-18 16:01:58', 2, 2, 0),
+(121, 'CF002', 'Cà phê sữa', 95, 7000, 15000, 0, 1, 0, 0, 48, 138, 0, '', 0, 0, 0, 0, 0, '2023-05-31 11:02:59', '2023-06-18 16:01:58', 2, 2, 0),
 (122, 'CF003', 'Trà sữa', 99, 10000, 20000, 0, 1, 0, 0, 48, 138, 0, '', 0, 0, 0, 0, 0, '2023-05-31 11:26:23', '2023-06-13 14:40:58', 2, 2, 0),
 (123, 'SP00001', 'Cà phê sữa', 100, 7000, 15000, 0, 1, 0, 0, 48, 138, 0, '', 0, 0, 0, 0, 0, '2023-06-13 13:52:29', '2023-06-13 14:21:15', 2, 2, 0),
 (124, 'SP00002', 'Trà đá', 11, 111, 1111, 0, 1, 0, 0, 48, 138, 0, '', 0, 0, 0, 0, 0, '2023-06-13 13:54:39', '2023-06-13 14:34:17', 2, 2, 1),
@@ -355,7 +353,10 @@ INSERT INTO `cms_report` (`ID`, `transaction_code`, `transaction_id`, `customer_
 (400, 'PX0000007', 256, 0, 2, '2023-06-13 14:40:58', '', 120, 0, 10000, 5000, 0, 1, 10000, 0, '2023-06-13 14:40:58', '0000-00-00 00:00:00', 25, 0, 0, 0, 3, -1),
 (401, 'PX0000007', 256, 0, 2, '2023-06-13 14:40:58', '', 121, 0, 15000, 7000, 0, 1, 15000, 0, '2023-06-13 14:40:58', '0000-00-00 00:00:00', 25, 0, 0, 0, 3, -1),
 (402, 'PX0000007', 256, 0, 2, '2023-06-13 14:40:58', '', 122, 0, 20000, 10000, 0, 1, 20000, 0, '2023-06-13 14:40:58', '0000-00-00 00:00:00', 25, 0, 0, 0, 3, -1),
-(403, 'PX0000007', 256, 0, 2, '2023-06-13 14:40:58', '', 125, 0, 15000, 6000, 0, 1, 15000, 0, '2023-06-13 14:40:58', '0000-00-00 00:00:00', 25, 0, 0, 0, 3, -1);
+(403, 'PX0000007', 256, 0, 2, '2023-06-13 14:40:58', '', 125, 0, 15000, 6000, 0, 1, 15000, 0, '2023-06-13 14:40:58', '0000-00-00 00:00:00', 25, 0, 0, 0, 3, -1),
+(404, 'PX0000008', 257, 0, 8, '2023-06-18 14:44:45', '', 120, 0, 10000, 5000, 0, 1, 10000, 0, '2023-06-18 14:44:45', '0000-00-00 00:00:00', 2, 0, 0, 0, 3, -2),
+(405, 'PX0000009', 258, 0, 8, '2023-06-18 16:01:58', '', 120, 0, 10000, 5000, 0, 1, 10000, 0, '2023-06-18 16:01:58', '0000-00-00 00:00:00', 2, 0, 0, 0, 3, -3),
+(406, 'PX0000009', 258, 0, 8, '2023-06-18 16:01:58', '', 121, 0, 15000, 7000, 0, 1, 15000, 0, '2023-06-18 16:01:58', '0000-00-00 00:00:00', 2, 0, 0, 0, 3, -3);
 
 -- --------------------------------------------------------
 
@@ -458,9 +459,9 @@ CREATE TABLE `cms_users` (
 --
 
 INSERT INTO `cms_users` (`id`, `username`, `password`, `salt`, `email`, `display_name`, `user_status`, `group_id`, `store_id`, `created`, `updated`, `logined`, `ip_logged`, `recode`, `code_time_out`) VALUES
-(2, 'admin', 'acafabfb3b45089f905b5c8c0698f63c', 'GsV3TQXMytmADVjb817hblQmp6rg1ybqulyz4qE21W3y4bAsCpvdeFO1GGr4Rbdcu2HW0', 'admin@admin.com', 'admin', 1, 1, 8, '2017-09-25 23:01:53', '2023-06-01 15:21:15', '2023-06-13 14:33:56.0', '::1', '', ''),
+(2, 'admin', 'b2c11f04424b018932f7df7531e2022e', 'c9eXKhDUw26jCmyYnhVXZLIHcO8KD2KZIMNJYEzk9WFQm6lJabkYQ0aVCwDSFvNiaZWh3', 'admin@admin.com', 'admin', 1, 1, 8, '2017-09-25 23:01:53', '2023-06-18 14:56:44', '2023-06-18 16:01:50.0', '::1', '', ''),
 (26, 'trung_ql', '29412291540d5479e789a486b09ea4e5', 'y($&@x)Ie8PClugI%dZECyKwNs%mwPHFd$BWNAjfwqwS8f7AcxNiNM6uMshvEoY5Amc&4', 'trung_ql@gmail.com', 'Đặng Thành Trung', 1, 2, 1, '2023-05-31 10:55:38', '2023-06-13 14:36:00', '2023-06-13 14:39:27.0', '::1', '', ''),
-(25, 'trung_nv', '3c124ea54c0d1f996ba21a9c2050cfee', 'KHU%NcK1LqIhLyLQlkHDr*h(k5b*P*4JSLmnjhAEZae!f29s^Cpv0m)br1N@96^RhbTpc', 'trung@gmail.com', 'Đặng Thành Trung', 1, 3, 2, '2023-05-31 10:55:11', '2023-06-01 15:11:32', '2023-06-13 14:40:41.0', '::1', '', '');
+(25, 'trung_nv', '3c124ea54c0d1f996ba21a9c2050cfee', 'KHU%NcK1LqIhLyLQlkHDr*h(k5b*P*4JSLmnjhAEZae!f29s^Cpv0m)br1N@96^RhbTpc', 'trung@gmail.com', 'Đặng Thành Trung', 1, 3, 2, '2023-05-31 10:55:11', '2023-06-01 15:11:32', '2023-06-17 09:35:23.0', '::1', '', '');
 
 -- --------------------------------------------------------
 
@@ -493,6 +494,12 @@ INSERT INTO `cms_users_group` (`id`, `group_name`, `group_permission`, `group_re
 -- Indexes for table `cms_customers`
 --
 ALTER TABLE `cms_customers`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- Indexes for table `cms_discount`
+--
+ALTER TABLE `cms_discount`
   ADD PRIMARY KEY (`ID`);
 
 --
@@ -584,6 +591,12 @@ ALTER TABLE `cms_customers`
   MODIFY `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
+-- AUTO_INCREMENT for table `cms_discount`
+--
+ALTER TABLE `cms_discount`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
 -- AUTO_INCREMENT for table `cms_input`
 --
 ALTER TABLE `cms_input`
@@ -593,7 +606,7 @@ ALTER TABLE `cms_input`
 -- AUTO_INCREMENT for table `cms_orders`
 --
 ALTER TABLE `cms_orders`
-  MODIFY `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=257;
+  MODIFY `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=259;
 
 --
 -- AUTO_INCREMENT for table `cms_permissions`
@@ -623,7 +636,7 @@ ALTER TABLE `cms_products_manufacture`
 -- AUTO_INCREMENT for table `cms_report`
 --
 ALTER TABLE `cms_report`
-  MODIFY `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=404;
+  MODIFY `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=407;
 
 --
 -- AUTO_INCREMENT for table `cms_stores`
@@ -653,7 +666,7 @@ ALTER TABLE `cms_users`
 -- AUTO_INCREMENT for table `cms_users_group`
 --
 ALTER TABLE `cms_users_group`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

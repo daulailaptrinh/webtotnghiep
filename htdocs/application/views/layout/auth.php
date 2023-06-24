@@ -24,10 +24,10 @@
 <header id="main-header">
     <div class="container">
         <div class="row">
-            <div class="col-md-4 col-md-offset-4">
+            <div class="col-md-6 col-md-offset-3">
                 <center style="    font-size: 40px;
     color: #fff;
-    padding-top: 80px;">Quản Lý Bán Hàng Online</center>
+    padding-top: 80px;">QUẢN LÝ ĐIỂM BÁN HÀNG TAKE AWAY</center>
             </div>
         </div>
     </div>
