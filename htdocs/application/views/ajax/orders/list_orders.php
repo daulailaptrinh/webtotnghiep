@@ -56,6 +56,9 @@
                     <i title="In" onclick="cms_print_order(1,<?php echo $item['ID']; ?>)"
                        class="fa fa-print blue"
                        style="margin-right: 5px;"></i>
+                    <?php
+                    $check = $this->db->from('users')->where('id', $_SESSION['id'])->get()->row_array();
+                    if ($check['group_id'] != 3):?>
                     <i class="fa fa-trash-o" style="color: darkred;" title="<?php if ($option == 1)
                         echo 'Xóa vĩnh viễn';
                     else
@@ -63,7 +66,10 @@
                        onclick="<?php if ($option == 1)
                            echo 'cms_del_order';
                        else
-                           echo 'cms_del_temp_order'?>(<?php echo $item['ID'] . ',' . $page; ?>)"></i></td>
+                           echo 'cms_del_temp_order'?>(<?php echo $item['ID'] . ',' . $page; ?>)"></i>
+                    <?php endif; ?>
+                           
+                    </td>
                 <td class="text-center"><label class="checkbox" style="margin: 0;"><input type="checkbox"
                                                                                           value="<?php echo $item['ID']; ?>"
                                                                                           class="checkbox chk"><span

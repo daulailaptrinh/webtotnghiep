@@ -101,7 +101,18 @@
                             </div>
                             <div class="form-group marg-bot-10 clearfix">
                                 <div class="col-md-5">
-                                    <label>Ghi chú</label>
+                                    <label>
+                                        <?php 
+                                        if ($data['_order']['deleted'] == 1)
+                                        {
+                                            echo 'Lý do xóa';
+                                        }
+                                        else
+                                        {
+                                            echo 'Ghi chú';
+                                        }
+                                        ?>
+                                    </label>
                                 </div>
                                 <div class="col-md-7">
                                     <textarea readonly id="note-order" cols="" class="form-control" rows="3"

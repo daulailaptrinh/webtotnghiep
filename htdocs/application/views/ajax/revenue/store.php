@@ -212,7 +212,9 @@
     }      
 ?>
 
-<label style="color: #428bca;font-size: 23px;">Biếu đồ doanh thu</label>
+<div style="text-align: center;">
+    <label style="color: #428bca;font-size: 23px;margin-top: 10px;margin-bottom: 10px;">Biểu đồ doanh thu</label>
+</div>
 
 <div id="chart" style="height: 250px;"></div>
 <script>

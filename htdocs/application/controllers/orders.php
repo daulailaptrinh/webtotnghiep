@@ -475,6 +475,7 @@ class Orders extends CI_Controller
 
     public function cms_del_temp_order($id)
     {
+        $check = $this->db->from('users')->where('id', $this->auth['id'])->get()->row_array();
         $id = (int)$id;
         $order = $this->db->from('orders')->where(['ID' => $id, 'deleted' => 0])->get()->row_array();
         $store_id = $order['store_id'];
@@ -482,7 +483,7 @@ class Orders extends CI_Controller
         $note = $data['notes'];
         $this->db->trans_begin();
         $user_init = $this->auth['id'];
-        if (isset($order) && count($order)) {
+        if (isset($order) && count($order) && ($check['group_id'] == 1)) {
             if ($order['order_status'] == 1) {
                 $list_products = json_decode($order['detail_order'], true);
                 foreach ($list_products as $item) {

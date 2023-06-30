@@ -7,6 +7,10 @@
                 <span class="lbl">Báo cáo tổng hợp</span>
             </label>
             <label style="color: #307ecc;">
+                <input type="radio" name="revenue" value="5">
+                <span class="lbl">Theo cửa hàng</span>
+            </label>
+            <label style="color: #307ecc;">
                 <input type="radio" name="revenue" value="2">
                 <span class="lbl">Theo khách hàng</span>
             </label>
@@ -14,14 +18,10 @@
                 <input type="radio" name="revenue" value="3">
                 <span class="lbl">Theo thu ngân</span>
             </label>
-            <label style="color: #307ecc;">
+            <!-- <label style="color: #307ecc;">
                 <input type="radio" name="revenue" value="4">
                 <span class="lbl">Theo nhân viên bán hàng</span>
-            </label>
-            <label style="color: #307ecc;">
-                <input type="radio" name="revenue" value="5">
-                <span class="lbl">Theo cửa hàng</span>
-            </label>
+            </label> -->
             <label style="color: #307ecc;">
                 <input type="radio" name="revenue" value="6">
                 <span class="lbl">Theo hàng hóa</span>
