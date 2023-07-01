@@ -4,7 +4,7 @@
 define('CMS_DB_HOST', 'localhost:8080');
 define('CMS_DB_USER', 'root');
 define('CMS_DB_PASSWORD', '');
-define('CMS_DB_NAME', '113');
+define('CMS_DB_NAME', 'qlbanhang');
 define('CMS_DB_PREFIX', 'cms_');
 
 /************ ORTHER ************/
